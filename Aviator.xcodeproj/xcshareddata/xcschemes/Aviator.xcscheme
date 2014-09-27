@@ -17,7 +17,7 @@
                BlueprintIdentifier = "76225AC119D6792F00755F57"
                BuildableName = "Aviator.xcplugin"
                BlueprintName = "Aviator"
-               ReferencedContainer = "container:TestSwitcher.xcodeproj">
+               ReferencedContainer = "container:Aviator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8966AFCA173EB7BF004150C0"
-               BuildableName = "TestSwitcherTests.xctest"
-               BlueprintName = "TestSwitcherTests"
-               ReferencedContainer = "container:TestSwitcher.xcodeproj">
+               BuildableName = "AviatorTests.xctest"
+               BlueprintName = "AviatorTests"
+               ReferencedContainer = "container:Aviator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -64,7 +64,7 @@
             BlueprintIdentifier = "76225AC119D6792F00755F57"
             BuildableName = "Aviator.xcplugin"
             BlueprintName = "Aviator"
-            ReferencedContainer = "container:TestSwitcher.xcodeproj">
+            ReferencedContainer = "container:Aviator.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>

@@ -1,5 +1,12 @@
 #import "TFFXcodeDocumentNavigator.h"
 
+@interface TFFXcodeDocumentNavigator ()
++ (IDEEditorContext *)currentEditorContext;
++ (id)currentEditor;
++ (IDEWorkspaceDocument *)currentWorkspaceDocument;
++ (IDEWorkspace *)currentWorkspace;
+@end
+
 @implementation TFFXcodeDocumentNavigator
 
 + (IDEEditorContext *)currentEditorContext {

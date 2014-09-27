@@ -8,13 +8,13 @@
     @try {
         IDESourceCodeDocument *document = [TFFXcodeDocumentNavigator currentSourceCodeDocument];
         DVTFilePath *filePath = [document filePath];
-        NSURL *fileUrl = [self testOrImplementationFileForCurrentFile:[filePath fileURL]];
+        NSURL *fileUrl = [self testOrImplementationFileURLForCurrentFile:[filePath fileURL]];
         
         [TFFXcodeDocumentNavigator jumpToFileURL:fileUrl];
     } @catch (NSException *) {}
 }
 
-+ (NSURL *)testOrImplementationFileForCurrentFile:(NSURL *)fileUrl {
++ (NSURL *)testOrImplementationFileURLForCurrentFile:(NSURL *)fileUrl {
     NSString *fileName = [[fileUrl URLByDeletingPathExtension] lastPathComponent];
     
     NSString *urlString = [[fileUrl URLByDeletingPathExtension] path];

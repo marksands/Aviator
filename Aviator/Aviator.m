@@ -1,12 +1,12 @@
-#import "TestSwitcher.h"
+#import "Aviator.h"
 #import "TFFFileSwitcher.h"
 
-static TestSwitcher *sharedPlugin;
+static Aviator *sharedPlugin;
 
-@interface TestSwitcher()
+@interface Aviator()
 @end
 
-@implementation TestSwitcher
+@implementation Aviator
 
 + (void)pluginDidLoad:(NSBundle *)plugin {
     static dispatch_once_t onceToken;
