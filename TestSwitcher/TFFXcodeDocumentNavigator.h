@@ -1,8 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "XcodePrivate.h"
 
-@class DVTDocumentLocation;
-
 @interface TFFXcodeDocumentNavigator : NSObject
 
 + (IDEEditorContext *)currentEditorContext;
@@ -10,6 +8,7 @@
 + (IDEWorkspaceDocument *)currentWorkspaceDocument;
 + (IDEWorkspace *)currentWorkspace;
 + (NSString *)currentWorkspacePath;
++ (IDESourceCodeDocument *)currentSourceCodeDocument;
 
 + (void)jumpToFileURL:(NSURL *)fileURL;
 

@@ -1,278 +1,28 @@
 //
-//  CPXcodeInterfaces.h
-//  CodePilot
 //
-//  Created by Zbigniew Sobiecki on 3/24/10.
-//  Copyright 2010 Macoscope. All rights reserved.
+//  Created by Zitao on 12/05/13.
 //
 //
 
-#import <AppKit/AppKit.h>
+#import <Cocoa/Cocoa.h>
 
-@interface DVTSourceCodeSymbolKind : NSObject
-+ (id)containerSymbolKind;
-+ (id)globalSymbolKind;
-+ (id)callableSymbolKind;
-+ (id)memberSymbolKind;
-+ (id)memberContainerSymbolKind;
-+ (id)categorySymbolKind;
-+ (id)classMethodSymbolKind;
-+ (id)classSymbolKind;
-+ (id)enumSymbolKind;
-+ (id)enumConstantSymbolKind;
-+ (id)fieldSymbolKind;
-+ (id)functionSymbolKind;
-+ (id)instanceMethodSymbolKind;
-+ (id)instanceVariableSymbolKind;
-+ (id)classVariableSymbolKind;
-+ (id)macroSymbolKind;
-+ (id)parameterSymbolKind;
-+ (id)propertySymbolKind;
-+ (id)protocolSymbolKind;
-+ (id)structSymbolKind;
-+ (id)typedefSymbolKind;
-+ (id)unionSymbolKind;
-+ (id)localVariableSymbolKind;
-+ (id)globalVariableSymbolKind;
-+ (id)ibActionMethodSymbolKind;
-+ (id)ibOutletSymbolKind;
-+ (id)ibOutletVariableSymbolKind;
-+ (id)ibOutletPropertySymbolKind;
-+ (id)ibOutletCollectionSymbolKind;
-+ (id)ibOutletCollectionVariableSymbolKind;
-+ (id)ibOutletCollectionPropertySymbolKind;
-+ (id)namespaceSymbolKind;
-+ (id)classTemplateSymbolKind;
-+ (id)functionTemplateSymbolKind;
-+ (id)instanceMethodTemplateSymbolKind;
-+ (id)classMethodTemplateSymbolKind;
-+ (void)initialize;
-+ (id)sourceCodeSymbolKinds;
-- (id)icon;
-- (id)description;
-- (id)conformedToSymbolKinds;
-- (id)allConformingSymbolKinds;
-- (char)isContainer;
-- (id)identifier;
-- (id)localizedDescription;
+@interface DVTTextDocumentLocation : NSObject
+@property (readonly) NSRange characterRange;
+@property (readonly) NSRange lineRange;
 @end
 
-@interface IDEDocumentController : NSObject
-+ (id)sharedDocumentController;
-- (NSArray *)workspaceDocuments;
+@interface DVTTextPreferences : NSObject
++ (id)preferences;
+@property BOOL trimWhitespaceOnlyLines;
+@property BOOL trimTrailingWhitespace;
+@property BOOL useSyntaxAwareIndenting;
 @end
 
-@class DVTDocumentLocation, DVTFileDataType;
-@interface DVTFilePath : NSObject
-- (NSURL *)fileURL;
-- (NSString *)pathString;
-- (NSString *)fileName;
-+ (DVTFilePath *)filePathForPathString:(NSString *)path;
-- (DVTFilePath *)file;
-- (NSImage *)navigableItem_image;
-
-- (DVTDocumentLocation *)navigableItem_contentDocumentLocation;
-- (DVTFileDataType *)navigableItem_documentType;
-- (DVTFilePath *)parentFilePath;
-- (DVTFilePath *)volumeFilePath;
-@end
-
-@interface IDEIndex : NSObject
-- (DVTFilePath *)databaseFile;
-- (NSArray *)topLevelSymbolsInFile:(NSString *)filepath;
-- (NSArray *)allSymbolsMatchingKind:(DVTSourceCodeSymbolKind *)symbolKind workspaceOnly:(BOOL)wonly;
-@end
-
-
-@class IDEIndexDatabase;
-@interface IDEIndexDatabaseQueryProvider : NSObject
-- (id)topLevelSymbolsInFile:(NSString *)filePath forIndex:(IDEIndex *)index;
-- (id)filesContaining:(NSString *)a anchorStart:(NSString *)b anchorEnd:(NSString *)c subsequence:(NSString *)d ignoreCase:(BOOL)ignoreCase forIndex:(IDEIndex *)wwefwew;
-- (IDEIndexDatabase *)database;
-@end
-
-@interface IDEIndexDBConnection : NSObject
-- (void)close;
-- (void)finalize;
-- (id)dbConnection;
-@end
-
-@interface IDEIndexDatabase : NSObject
-- (IDEIndexDatabase *)initWithFileURL:(NSURL *)fileURL;
-- (IDEIndexDatabaseQueryProvider *)queryProvider;
-- (void)open;
-- (void)openReadonly;
-- (void)openInDiagnosticMode;
-- (void)close;
-- (id)mainFilesForTarget:(NSString *)targetNameOrWTF;
-- (IDEIndexDBConnection *)newConnection;
-- (NSURL *)fileURL;
-@end
-
-@interface DVTModelObject : NSObject
-@end
-
-@interface IDEContainerItem : DVTModelObject
-@end
-
-@interface IDEGroup : IDEContainerItem
-- (NSArray *)subitems;
-- (NSImage *)navigableItem_image;
-@end
-
-@interface IDEContainer : DVTModelObject
-- (DVTFilePath *)filePath;
-- (IDEGroup *)rootGroup;
-- (void)debugPrintInnerStructure;
-- (void)debugPrintStructure;
-@end
-
-@interface IDEXMLPackageContainer : IDEContainer
-@end
-
-@interface IDEWorkspace : IDEXMLPackageContainer
-- (IDEIndex *)index;
-- (NSString *)name;
-- (NSSet *)referencedContainers;
-@end
-
-@interface IDEWorkspaceDocument : NSObject
-- (IDEWorkspace *)workspace;
-- (NSArray *)recentEditorDocumentURLs;
-- (NSURL *)fileURL;
-- (id)sdefSupport_fileReferences;
-@end
-
-@interface IDEWorkspaceWindow : NSWindow
-- (IDEWorkspaceDocument *)document;
-@end
-
-@interface IDEFileReference : NSObject
-- (IDEContainer *)referencedContainer;
-@end
-
-@interface PBXObject : NSObject
-@end
-
-@interface PBXContainer : PBXObject
-- (NSString *)name;
-@end
-
-@interface PBXContainerItem : PBXObject
-@end
-
-@class PBXGroup;
-@interface PBXReference : PBXContainerItem
-- (BOOL)isGroup;
-- (NSString *)name;
-- (NSString *)absolutePath;
-- (PBXGroup *)group;
-- (PBXContainer *)container;
-@end
-
-@interface PBXGroup : PBXReference
-- (NSArray *)children;
-@end
-
-@interface Xcode3Group : IDEGroup
-- (PBXGroup *)group;
-@end
-
-@interface Xcode3Project : IDEContainer
-- (Xcode3Group *)rootGroup;
-@end
-
-@interface DVTApplication : NSApplication
-@end
-
-@interface IDEApplication : DVTApplication
-+ (IDEApplication *)sharedApplication;
-@end
-
-@interface IDEApplicationController : NSObject
-+ (IDEApplicationController *)sharedAppController;
-- (BOOL)application:(IDEApplication *)application openFile:(NSString *)filePath;
-@end
-
-@interface XCSpecification : NSObject
-@end
-
-@interface PBXFileType : XCSpecification
-- (BOOL)isBundle;
-- (BOOL)isApplication;
-- (BOOL)isLibrary;
-- (BOOL)isFramework;
-- (BOOL)isProjectWrapper;
-- (BOOL)isTargetWrapper;
-- (BOOL)isExecutable;
-@end
-
-@interface PBXFileReference : PBXReference
-- (NSString *)resolvedAbsolutePath;
-- (id)fileType;
-- (NSArray *)children;
-@end
-
-@interface IDEIndexSymbolOccurrence : NSObject
-- (id)file;
-- (id)location;
-- (long long)lineNumber;
-@end
-
-@interface IDEIndexCollection : NSObject
-- (NSArray *)allObjects;
-@end
-
-@interface IDEIndexSymbolOccurrenceCollection : IDEIndexCollection <NSFastEnumeration>
-@end
-
-@interface IDEIndexSymbol : NSObject
-- (NSString *)name;
-- (DVTSourceCodeSymbolKind *)symbolKind;
-- (NSString *)displayText;
-- (NSString *)completionText;
-- (NSString *)displayType;
-- (NSString *)descriptionText;
-- (NSImage *)icon;
-
-- (IDEIndexSymbolOccurrence *)modelOccurrence;
-- (IDEIndexSymbolOccurrenceCollection *)occurrences;
-- (IDEIndexSymbolOccurrenceCollection *)declarations;
-- (IDEIndexSymbolOccurrenceCollection *)definitions;
-
-- (NSArray *)containerSymbols;
-- (id)containerSymbol;
-
-- (unsigned long long)hash;
-@end
-
-@interface IDEIndexContainerSymbol : IDEIndexSymbol
-- (NSArray *)children;
-@end
-
-@interface IDEIndexClassSymbol : IDEIndexContainerSymbol
-- (NSArray *)categories;
-@end
-
-@interface IDEIndexProtocolSymbol : IDEIndexContainerSymbol
-@end
-
-@interface IDEIndexCategorySymbol : IDEIndexContainerSymbol
-- (NSArray *)classMethods;
-- (NSArray *)instanceMethods;
-- (NSArray *)properties;
-@end
-
-@interface IDENavigableItem : NSObject
-+ (IDENavigableItem *)navigableItemWithRepresentedObject:(id)object;
-@end
-
-@interface IDEFileNavigableItem : IDENavigableItem
-+ (IDEFileNavigableItem *)navigableItemWithRepresentedObject:(id)object;
-@end
-
-@interface IDEFileReferenceNavigableItem : IDEFileNavigableItem
-+ (IDEFileReferenceNavigableItem *)navigableItemWithRepresentedObject:(id)object;
+@interface DVTSourceTextStorage : NSTextStorage
+- (void)replaceCharactersInRange:(NSRange)range withString:(NSString *)string withUndoManager:(id)undoManager;
+- (NSRange)lineRangeForCharacterRange:(NSRange)range;
+- (NSRange)characterRangeForLineRange:(NSRange)range;
+- (void)indentCharacterRange:(NSRange)range undoManager:(id)undoManager;
 @end
 
 @interface DVTDocumentLocation : NSObject
@@ -280,139 +30,106 @@
 - (NSURL *)documentURL;
 @end
 
-@interface DVTTextDocumentLocation : DVTDocumentLocation
-- (DVTTextDocumentLocation *)initWithDocumentURL:(NSURL *)documentURL timestamp:(NSNumber *)timestamp lineRange:(NSRange)lineRange;
-- (NSRange)characterRange;
-- (NSURL *)documentURL;
+@interface DVTFileDataType : NSObject
+@property (readonly) NSString *identifier;
 @end
 
-@interface DVTViewController : NSViewController
-@end
-@interface IDEViewController : DVTViewController
+@interface DVTFilePath : NSObject
+@property (readonly) NSURL *fileURL;
+@property (readonly) DVTFileDataType *fileDataTypePresumed;
 @end
 
+@interface IDEContainerItem : NSObject
+@property (readonly) DVTFilePath *resolvedFilePath;
+@end
+
+@interface IDEGroup : IDEContainerItem
+
+@end
+
+@interface IDEFileReference : IDEContainerItem
+
+@end
+
+@interface IDENavigableItem : NSObject
+@property (readonly) IDENavigableItem *parentItem;
+@property (readonly) id representedObject;
+@end
+
+@interface IDEFileNavigableItem : IDENavigableItem
+@property (readonly) DVTFileDataType *documentType;
+@property (readonly) NSURL *fileURL;
+@end
+
+@interface IDEStructureNavigator : NSObject
+@property (retain) NSArray *selectedObjects;
+@end
+
+@interface IDENavigableItemCoordinator : NSObject
+- (id)structureNavigableItemForDocumentURL:(id)arg1 inWorkspace:(id)arg2 error:(id *)arg3;
+@end
+
+@interface IDENavigatorArea : NSObject
+- (id)currentNavigator;
+@end
+
+@interface IDEWorkspaceTabController : NSObject
+@property (readonly) IDENavigatorArea *navigatorArea;
+@end
+
+@interface IDEDocumentController : NSDocumentController
++ (id)editorDocumentForNavigableItem:(id)arg1;
++ (id)retainedEditorDocumentForNavigableItem:(id)arg1 error:(id *)arg2;
++ (void)releaseEditorDocument:(id)arg1;
+@end
+
+@interface IDESourceCodeDocument : NSDocument
+- (DVTFilePath *)filePath;
+- (DVTSourceTextStorage *)textStorage;
+- (NSUndoManager *)undoManager;
+@end
+
+@class DVTDocumentLocation;
 @interface IDEEditorOpenSpecifier : NSObject
 - (IDEEditorOpenSpecifier *)initWithNavigableItem:(IDENavigableItem *)navigableItem error:(NSError *)error;
-+ (IDEEditorOpenSpecifier *)structureEditorOpenSpecifierForDocumentLocation:(DVTDocumentLocation *)documentLocation inWorkspace:(IDEWorkspace *)workspace error:(NSError *)error;
++ (IDEEditorOpenSpecifier *)structureEditorOpenSpecifierForDocumentLocation:(DVTDocumentLocation *)documentLocation inWorkspace:(id)workspace error:(NSError *)error;
 @end
 
-@interface IDEEditorHistoryItem : NSObject
-- (NSString *)historyMenuItemTitle;
-- (NSURL *)documentURL;
+@interface IDESourceCodeComparisonEditor : NSObject
+@property (readonly) NSTextView *keyTextView;
+@property (retain) NSDocument *primaryDocument;
 @end
 
-@interface DVTSourceExpression : NSObject
-- (NSString *)textSelectionString;
+@interface IDESourceCodeEditor : NSObject
+@property (retain) NSTextView *textView;
+- (IDESourceCodeDocument *)sourceCodeDocument;
 @end
 
-@interface IDEEditorHistoryStack : NSObject
-- (NSArray *)previousHistoryItems;
-- (NSArray *)nextHistoryItems;
-- (IDEEditorHistoryItem *)currentEditorHistoryItem;
+@interface IDEEditorContext : NSObject
+- (BOOL)openEditorOpenSpecifier:(id)openSpecifier;
+- (id)editor; // returns the current editor. If the editor is the code editor, the class is `IDESourceCodeEditor`
 @end
 
-@class IDEEditor;
-@interface IDEEditorContext : IDEViewController
-- (BOOL)openEditorOpenSpecifier:(IDEEditorOpenSpecifier *)openSpecifier;
-- (IDEEditorHistoryStack *)currentHistoryStack;
-- (IDEEditor *)editor;
-@end
-
-@interface IDEEditorArea : IDEViewController
-- (IDEEditorContext *)primaryEditorContext;
+@interface IDEEditorArea : NSObject
 - (IDEEditorContext *)lastActiveEditorContext;
 @end
 
-@interface IDEWorkspaceWindowController : NSWindowController
-+ (NSArray *)workspaceWindowControllers;
-+ (IDEWorkspaceWindowController *)workspaceWindowControllerForWindow:(IDEWorkspaceWindow *)window;
+@interface IDEWorkspaceWindowController : NSObject
+@property (readonly) IDEWorkspaceTabController *activeWorkspaceTabController;
 - (IDEEditorArea *)editorArea;
 @end
 
-@interface IDEKeyBinding : NSObject
-- (NSString *)title;
-- (NSString *)group;
-- (NSArray *)actions;
-- (NSArray *)keyboardShortcuts;
-+ (IDEKeyBinding *)keyBindingWithTitle:(NSString *)title group:(NSString *)group actions:(NSArray *)actions keyboardShortcuts:(NSArray *)keyboardShortcuts;
-+ (IDEKeyBinding *)keyBindingWithTitle:(NSString *)title parentTitle:(NSString *)parentTitle group:(NSString *)group actions:(NSArray *)actions keyboardShortcuts:(NSArray *)keyboardShortcuts;
+@interface IDEWorkspace : NSObject
+@property (readonly) DVTFilePath *representingFilePath;
 @end
 
-@interface IDEMenuKeyBinding : IDEKeyBinding
-- (NSString *)commandIdentifier;
-+ (IDEMenuKeyBinding *)keyBindingWithTitle:(NSString *)title group:(NSString *)group actions:(NSArray *)actions keyboardShortcuts:(NSArray *)keyboardShortcuts;
-+ (IDEMenuKeyBinding *)keyBindingWithTitle:(NSString *)title parentTitle:(NSString *)parentTitle group:(NSString *)group actions:(NSArray *)actions keyboardShortcuts:(NSArray *)keyboardShortcuts;
-- (void)setCommandIdentifier:(NSString *)commandIdentifier;
+@interface IDEWorkspaceDocument : NSDocument
+@property (readonly) IDEWorkspace *workspace;
 @end
 
-@class IDEKeyBindingPreferenceSetManager;
-@class IDEMenuKeyBindingSet;
-@interface IDEKeyBindingPreferenceSet : NSObject
-+ (IDEKeyBindingPreferenceSetManager *)preferenceSetsManager;
-- (IDEMenuKeyBindingSet *)menuKeyBindingSet;
-@end
-
-@interface IDEKeyBindingPreferenceSetManager : NSObject
-- (IDEKeyBindingPreferenceSet *)currentPreferenceSet;
-@end
-
-@interface IDEKeyBindingSet : NSObject
-- (void)addKeyBinding:(IDEKeyBinding *)keyBinding;
-- (void)insertObject:(IDEKeyBinding *)keyBinding inKeyBindingsAtIndex:(NSUInteger)index;
-- (void)updateDictionary;
-@end
-
-@interface IDEKeyboardShortcut : NSObject
-+ (id)keyboardShortcutFromStringRepresentation:(NSString *)stringRep;
-- (NSString *)stringRepresentation;
-- (NSString *)keyEquivalent;
-- (IDEKeyboardShortcut *)keyboardShortcutFromStringRepresentation:(NSString *)stringRep;
-- (unsigned long long)modifierMask;
-@end
-
-@interface IDEMenuKeyBindingSet : IDEKeyBindingSet
-- (NSArray *)keyBindings;
-@end
-
-@interface DVTAutoLayoutView : NSView
-@end
-
-@interface DVTReplacementView : DVTAutoLayoutView
-@end
-
-@interface IDEPreferencesController : NSWindowController <NSToolbarDelegate>
-- (void)setPaneReplacementView:(DVTReplacementView *)replacementView;
-- (DVTReplacementView *)paneReplacementView;
-@end
-
-@interface DVTExtension : NSObject
-@end
-
-@interface IDEEditor : IDEViewController
-- (NSArray *)currentSelectedDocumentLocations;
-- (DVTSourceExpression *)selectedExpression;
-@end
-
-@interface DVTSourceLandmarkItem : NSObject
-- (NSString *)name;
-@end
-
-@interface IDEDocSymbolUtilities : NSObject
-- (NSDictionary *)queryInfoFromIndexSymbol:(IDEIndexSymbol *)symbol;
-- (id)typeForSymbol:(IDEIndexSymbol *)symbol;
-- (void)queryInfoFromIndexSymbol:(IDEIndexSymbol *)symbol handlerBlock:(void(^)(id foo))block;
-@end
-
-@interface IDEQuickHelpQueries : NSObject
-@end
-
-extern NSString *IDEEditorDocumentDidChangeNotification;
-
-@interface IDESourceCodeDocument <NSObject>
-- (DVTFilePath *)filePath;
-- (id)knownFileReferences;
-@end
-
-@interface Xcode3FileReference <NSObject>
-- (id)resolvedFilePath;
+@interface RCXcode : NSObject
++ (IDEWorkspaceDocument *)currentWorkspaceDocument;
++ (IDESourceCodeDocument *)currentSourceCodeDocument;
++ (NSTextView *)currentSourceCodeTextView;
++ (NSArray *)selectedObjCFileNavigableItems;
 @end
