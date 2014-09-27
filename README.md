@@ -14,7 +14,7 @@ Once I fix the annoyances, I will submit this to Alcatraz.
 
 ### TODO
 
-* Fix the conflicting ⇧⌘T used to create a new window, preferably by modifying that shortcut. Currenly I remove the menu item
+* Fix the conflicting ⇧⌘T used to create a new window, preferably by modifying that shortcut
 * Move the Edit menu item to the Navigate menu item
 * Better Test/Implementation file searching through actual directory instead of guessing
 
