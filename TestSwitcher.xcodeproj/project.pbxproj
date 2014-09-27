@@ -1,0 +1,300 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		76225AC619D6792F00755F57 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76225AC519D6792F00755F57 /* AppKit.framework */; };
+		76225AC819D6792F00755F57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76225AC719D6792F00755F57 /* Foundation.framework */; };
+		76225ACD19D6792F00755F57 /* TestSwitcher.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = 76225ACC19D6792F00755F57 /* TestSwitcher.xcscheme */; };
+		76225AD019D6792F00755F57 /* TestSwitcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 76225ACF19D6792F00755F57 /* TestSwitcher.m */; };
+		76225ADB19D6794800755F57 /* TFFFileSwitcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 76225AD719D6794800755F57 /* TFFFileSwitcher.m */; };
+		76225ADC19D6794800755F57 /* TFFXcodeDocumentNavigator.m in Sources */ = {isa = PBXBuildFile; fileRef = 76225AD919D6794800755F57 /* TFFXcodeDocumentNavigator.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		76225AC219D6792F00755F57 /* TestSwitcher.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestSwitcher.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		76225AC519D6792F00755F57 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		76225AC719D6792F00755F57 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		76225ACB19D6792F00755F57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		76225ACC19D6792F00755F57 /* TestSwitcher.xcscheme */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = TestSwitcher.xcscheme; path = TestSwitcher.xcodeproj/xcshareddata/xcschemes/TestSwitcher.xcscheme; sourceTree = SOURCE_ROOT; };
+		76225ACE19D6792F00755F57 /* TestSwitcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestSwitcher.h; sourceTree = "<group>"; };
+		76225ACF19D6792F00755F57 /* TestSwitcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestSwitcher.m; sourceTree = "<group>"; };
+		76225AD619D6794800755F57 /* TFFFileSwitcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFFFileSwitcher.h; sourceTree = "<group>"; };
+		76225AD719D6794800755F57 /* TFFFileSwitcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFFFileSwitcher.m; sourceTree = "<group>"; };
+		76225AD819D6794800755F57 /* TFFXcodeDocumentNavigator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFFXcodeDocumentNavigator.h; sourceTree = "<group>"; };
+		76225AD919D6794800755F57 /* TFFXcodeDocumentNavigator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFFXcodeDocumentNavigator.m; sourceTree = "<group>"; };
+		76225ADA19D6794800755F57 /* XCodePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCodePrivate.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		76225AC019D6792F00755F57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76225AC619D6792F00755F57 /* AppKit.framework in Frameworks */,
+				76225AC819D6792F00755F57 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		76225AB919D6792F00755F57 = {
+			isa = PBXGroup;
+			children = (
+				76225AC919D6792F00755F57 /* TestSwitcher */,
+				76225AC419D6792F00755F57 /* Frameworks */,
+				76225AC319D6792F00755F57 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		76225AC319D6792F00755F57 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				76225AC219D6792F00755F57 /* TestSwitcher.xcplugin */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		76225AC419D6792F00755F57 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				76225AC519D6792F00755F57 /* AppKit.framework */,
+				76225AC719D6792F00755F57 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		76225AC919D6792F00755F57 /* TestSwitcher */ = {
+			isa = PBXGroup;
+			children = (
+				76225AD619D6794800755F57 /* TFFFileSwitcher.h */,
+				76225AD719D6794800755F57 /* TFFFileSwitcher.m */,
+				76225AD819D6794800755F57 /* TFFXcodeDocumentNavigator.h */,
+				76225AD919D6794800755F57 /* TFFXcodeDocumentNavigator.m */,
+				76225ADA19D6794800755F57 /* XCodePrivate.h */,
+				76225ACE19D6792F00755F57 /* TestSwitcher.h */,
+				76225ACF19D6792F00755F57 /* TestSwitcher.m */,
+				76225ACA19D6792F00755F57 /* Supporting Files */,
+			);
+			path = TestSwitcher;
+			sourceTree = "<group>";
+		};
+		76225ACA19D6792F00755F57 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				76225ACB19D6792F00755F57 /* Info.plist */,
+				76225ACC19D6792F00755F57 /* TestSwitcher.xcscheme */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		76225AC119D6792F00755F57 /* TestSwitcher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 76225AD319D6792F00755F57 /* Build configuration list for PBXNativeTarget "TestSwitcher" */;
+			buildPhases = (
+				76225ABE19D6792F00755F57 /* Sources */,
+				76225ABF19D6792F00755F57 /* Resources */,
+				76225AC019D6792F00755F57 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TestSwitcher;
+			productName = TestSwitcher;
+			productReference = 76225AC219D6792F00755F57 /* TestSwitcher.xcplugin */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		76225ABA19D6792F00755F57 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Type440 LLC";
+				TargetAttributes = {
+					76225AC119D6792F00755F57 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+				};
+			};
+			buildConfigurationList = 76225ABD19D6792F00755F57 /* Build configuration list for PBXProject "TestSwitcher" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 76225AB919D6792F00755F57;
+			productRefGroup = 76225AC319D6792F00755F57 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				76225AC119D6792F00755F57 /* TestSwitcher */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		76225ABF19D6792F00755F57 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76225ACD19D6792F00755F57 /* TestSwitcher.xcscheme in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		76225ABE19D6792F00755F57 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76225AD019D6792F00755F57 /* TestSwitcher.m in Sources */,
+				76225ADC19D6794800755F57 /* TFFXcodeDocumentNavigator.m in Sources */,
+				76225ADB19D6794800755F57 /* TFFFileSwitcher.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		76225AD119D6792F00755F57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+			};
+			name = Debug;
+		};
+		76225AD219D6792F00755F57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+			};
+			name = Release;
+		};
+		76225AD419D6792F00755F57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "$(HOME)";
+				INFOPLIST_FILE = TestSwitcher/Info.plist;
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_linker,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xcplugin;
+			};
+			name = Debug;
+		};
+		76225AD519D6792F00755F57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "$(HOME)";
+				INFOPLIST_FILE = TestSwitcher/Info.plist;
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_linker,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xcplugin;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		76225ABD19D6792F00755F57 /* Build configuration list for PBXProject "TestSwitcher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76225AD119D6792F00755F57 /* Debug */,
+				76225AD219D6792F00755F57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		76225AD319D6792F00755F57 /* Build configuration list for PBXNativeTarget "TestSwitcher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76225AD419D6792F00755F57 /* Debug */,
+				76225AD519D6792F00755F57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 76225ABA19D6792F00755F57 /* Project object */;
+}
