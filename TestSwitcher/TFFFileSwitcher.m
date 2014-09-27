@@ -8,9 +8,8 @@
     @try {
         IDESourceCodeDocument *document = [TFFXcodeDocumentNavigator currentSourceCodeDocument];
         DVTFilePath *filePath = [document filePath];
-        NSURL *fileUrl = [filePath fileURL];
+        NSURL *fileUrl = [self testOrImplementationFileForCurrentFile:[filePath fileURL]];
         
-        fileUrl = [self testOrImplementationFileForCurrentFile:fileUrl];
         [TFFXcodeDocumentNavigator jumpToFileURL:fileUrl];
     } @catch (NSException *) {}
 }

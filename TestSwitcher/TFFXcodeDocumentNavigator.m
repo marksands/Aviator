@@ -33,11 +33,6 @@
     return [[self currentWorkspaceDocument] workspace];
 }
 
-+ (NSString *)currentWorkspacePath {
-    IDEWorkspaceDocument *document = [TFFXcodeDocumentNavigator currentWorkspaceDocument];
-    return [[document fileURL] path];
-}
-
 + (IDESourceCodeDocument *)currentSourceCodeDocument {
     if ([[self currentEditor] isKindOfClass:NSClassFromString(@"IDESourceCodeEditor")]) {
         IDESourceCodeEditor *editor = [self currentEditor];
@@ -56,22 +51,11 @@
 }
 
 + (void)jumpToFileURL:(NSURL *)fileURL {
-    //    id controller = [NSClassFromString(@"IDEApplicationController") performSelector:@selector(sharedAppController)];
-    //    id sharedApp = [NSClassFromString(@"IDEApplication") performSelector:@selector(sharedApplication)];
-    ////    [controller performSelector:@selector(application:openFile:) withObject:sharedApp withObject:fileURL.absoluteString];
-    
-    //@interface DVTDocumentLocation <NSObject>
-    //- (DVTDocumentLocation *)initWithDocumentURL:(NSURL *)documentURL timestamp:(NSNumber *)timestamp;
-    //- (NSURL *)documentURL;
-    //@end
-    
     DVTDocumentLocation *documentLocation = [[DVTDocumentLocation alloc] initWithDocumentURL:fileURL timestamp:nil];
-    
     IDEEditorOpenSpecifier *openSpecifier = [IDEEditorOpenSpecifier structureEditorOpenSpecifierForDocumentLocation:documentLocation
                                                                                                         inWorkspace:[self currentWorkspace]
                                                                                                               error:nil];
-    
-                                             [[self currentEditorContext] openEditorOpenSpecifier:openSpecifier];
+    [[self currentEditorContext] openEditorOpenSpecifier:openSpecifier];
 }
 
 @end

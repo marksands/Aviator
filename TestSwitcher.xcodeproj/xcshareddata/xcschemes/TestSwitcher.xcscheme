@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "890A4B3E171F031300AFE577"
-               BuildableName = "TestSwitcher.xcplugin"
-               BlueprintName = "TestSwitcher"
+               BlueprintIdentifier = "76225AC119D6792F00755F57"
+               BuildableName = "Aviator.xcplugin"
+               BlueprintName = "Aviator"
                ReferencedContainer = "container:TestSwitcher.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -61,9 +61,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "890A4B3E171F031300AFE577"
-            BuildableName = "TestSwitcher.xcplugin"
-            BlueprintName = "TestSwitcher"
+            BlueprintIdentifier = "76225AC119D6792F00755F57"
+            BuildableName = "Aviator.xcplugin"
+            BlueprintName = "Aviator"
             ReferencedContainer = "container:TestSwitcher.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -82,6 +82,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "Aviator"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

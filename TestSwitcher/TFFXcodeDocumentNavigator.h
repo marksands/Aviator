@@ -7,7 +7,6 @@
 + (id)currentEditor;
 + (IDEWorkspaceDocument *)currentWorkspaceDocument;
 + (IDEWorkspace *)currentWorkspace;
-+ (NSString *)currentWorkspacePath;
 + (IDESourceCodeDocument *)currentSourceCodeDocument;
 
 + (void)jumpToFileURL:(NSURL *)fileURL;

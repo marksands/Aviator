@@ -96,9 +96,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		76225AC119D6792F00755F57 /* TestSwitcher */ = {
+		76225AC119D6792F00755F57 /* Aviator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 76225AD319D6792F00755F57 /* Build configuration list for PBXNativeTarget "TestSwitcher" */;
+			buildConfigurationList = 76225AD319D6792F00755F57 /* Build configuration list for PBXNativeTarget "Aviator" */;
 			buildPhases = (
 				76225ABE19D6792F00755F57 /* Sources */,
 				76225ABF19D6792F00755F57 /* Resources */,
@@ -108,7 +108,7 @@
 			);
 			dependencies = (
 			);
-			name = TestSwitcher;
+			name = Aviator;
 			productName = TestSwitcher;
 			productReference = 76225AC219D6792F00755F57 /* TestSwitcher.xcplugin */;
 			productType = "com.apple.product-type.bundle";
@@ -139,7 +139,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				76225AC119D6792F00755F57 /* TestSwitcher */,
+				76225AC119D6792F00755F57 /* Aviator */,
 			);
 		};
 /* End PBXProject section */
@@ -286,13 +286,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		76225AD319D6792F00755F57 /* Build configuration list for PBXNativeTarget "TestSwitcher" */ = {
+		76225AD319D6792F00755F57 /* Build configuration list for PBXNativeTarget "Aviator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				76225AD419D6792F00755F57 /* Debug */,
 				76225AD519D6792F00755F57 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
