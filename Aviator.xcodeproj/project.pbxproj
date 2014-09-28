@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		76225AC619D6792F00755F57 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76225AC519D6792F00755F57 /* AppKit.framework */; };
 		76225AC819D6792F00755F57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76225AC719D6792F00755F57 /* Foundation.framework */; };
+		767455F319D7AA400059AA0E /* TFFileProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 767455F219D7AA400059AA0E /* TFFileProvider.m */; };
 		76ADCE8A19D6F7CC0072D2FC /* Aviator.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ADCE8419D6F7CC0072D2FC /* Aviator.m */; };
 		76ADCE8B19D6F7CC0072D2FC /* TFFFileSwitcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ADCE8619D6F7CC0072D2FC /* TFFFileSwitcher.m */; };
 		76ADCE8C19D6F7CC0072D2FC /* TFFXcodeDocumentNavigator.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ADCE8819D6F7CC0072D2FC /* TFFXcodeDocumentNavigator.m */; };
@@ -20,6 +21,8 @@
 		76225AC219D6792F00755F57 /* Aviator.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Aviator.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		76225AC519D6792F00755F57 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		76225AC719D6792F00755F57 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		767455F119D7AA400059AA0E /* TFFileProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFFileProvider.h; sourceTree = "<group>"; };
+		767455F219D7AA400059AA0E /* TFFileProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFFileProvider.m; sourceTree = "<group>"; };
 		76ADCE8319D6F7CC0072D2FC /* Aviator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Aviator.h; path = Aviator/Aviator.h; sourceTree = SOURCE_ROOT; };
 		76ADCE8419D6F7CC0072D2FC /* Aviator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Aviator.m; path = Aviator/Aviator.m; sourceTree = SOURCE_ROOT; };
 		76ADCE8519D6F7CC0072D2FC /* TFFFileSwitcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TFFFileSwitcher.h; path = Aviator/TFFFileSwitcher.h; sourceTree = SOURCE_ROOT; };
@@ -77,12 +80,13 @@
 				76ADCE8419D6F7CC0072D2FC /* Aviator.m */,
 				76ADCE8519D6F7CC0072D2FC /* TFFFileSwitcher.h */,
 				76ADCE8619D6F7CC0072D2FC /* TFFFileSwitcher.m */,
+				767455F119D7AA400059AA0E /* TFFileProvider.h */,
+				767455F219D7AA400059AA0E /* TFFileProvider.m */,
 				76ADCE8719D6F7CC0072D2FC /* TFFXcodeDocumentNavigator.h */,
 				76ADCE8819D6F7CC0072D2FC /* TFFXcodeDocumentNavigator.m */,
 				76ADCE8919D6F7CC0072D2FC /* XCodePrivate.h */,
 				76225ACA19D6792F00755F57 /* Supporting Files */,
 			);
-			name = Aviator;
 			path = Aviator;
 			sourceTree = "<group>";
 		};
@@ -163,6 +167,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				767455F319D7AA400059AA0E /* TFFileProvider.m in Sources */,
 				76ADCE8A19D6F7CC0072D2FC /* Aviator.m in Sources */,
 				76ADCE8C19D6F7CC0072D2FC /* TFFXcodeDocumentNavigator.m in Sources */,
 				76ADCE8B19D6F7CC0072D2FC /* TFFFileSwitcher.m in Sources */,
