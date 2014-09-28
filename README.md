@@ -2,21 +2,17 @@
 
 ### An Xcode Plugin that brings ⇧⌘T over to Xcode
 
+This minimal plugin allows you to use the key combo ⇧⌘T to toggle between source and test files.
+
 ### Features
 
-* Jump from implementation to test file
-* Jump from test file to implementation
+* Jump from source file to test file
+* Jump from test file to source file
 * That's it
 
 ### Installation
 
-Once I fix the annoyances, I will submit this to Alcatraz.
-
-### TODO
-
-* Fix the conflicting ⇧⌘T used to create a new window, preferably by modifying that shortcut
-* Move the Edit menu item to the Navigate menu item
-* Better Test/Implementation file searching through actual directory instead of guessing
+Coming soon to Alcatraz...
 
 ### License
 

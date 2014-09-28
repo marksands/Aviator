@@ -39,13 +39,14 @@ static Aviator *sharedPlugin;
 
 // TODO: Investigate why "Navigate" doesn't work
 - (void)addJumpItem {
-    NSMenuItem *navigateItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
+    NSMenuItem *navigateItem = [[NSApp mainMenu] itemWithTitle:@"Find"];
     if (navigateItem) {
         [[navigateItem submenu] addItem:[NSMenuItem separatorItem]];
         
         NSMenuItem *jumpItem = [[NSMenuItem alloc] initWithTitle:@"Jump to Test File" action:@selector(jumpToFile) keyEquivalent:@"t"];
         [jumpItem setKeyEquivalentModifierMask:NSCommandKeyMask | NSShiftKeyMask];
         [jumpItem setTarget:self];
+        [jumpItem setHidden:NO];
         
         [[navigateItem submenu] addItem:jumpItem];
     }
