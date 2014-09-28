@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B3E4DED7-EF92-49CA-BB1F-AB64658CE043</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Aviator</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5495D1492B598E5C0EC55C4B8D7C28F6E6878D34</key>
+		<string>github.com:marksands/Aviator.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Aviator.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5495D1492B598E5C0EC55C4B8D7C28F6E6878D34</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:marksands/Aviator.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5495D1492B598E5C0EC55C4B8D7C28F6E6878D34</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5495D1492B598E5C0EC55C4B8D7C28F6E6878D34</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Aviator</string>
+		</dict>
+	</array>
+</dict>
+</plist>

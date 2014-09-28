@@ -3,7 +3,9 @@
 
 @interface TFFXcodeDocumentNavigator : NSObject
 
++ (IDEWorkspace *)currentWorkspace;
 + (IDESourceCodeDocument *)currentSourceCodeDocument;
+
 + (void)jumpToFileURL:(NSURL *)fileURL;
 
 @end

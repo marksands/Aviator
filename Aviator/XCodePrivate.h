@@ -22,6 +22,7 @@
 
 @interface IDESourceCodeDocument : NSDocument
 - (DVTFilePath *)filePath;
+- (NSArray *)knownFileReferences;
 @end
 
 @class DVTDocumentLocation;
@@ -50,9 +51,75 @@
 - (IDEEditorArea *)editorArea;
 @end
 
-@interface IDEWorkspace : NSObject
+@interface DVTModelObject : NSObject
+@end
+
+@interface IDEContainerItem : DVTModelObject
+@end
+
+@interface IDEGroup : IDEContainerItem
+- (NSArray *)subitems;
+- (NSImage *)navigableItem_image;
+@end
+
+@interface IDEContainer : DVTModelObject
+- (DVTFilePath *)filePath;
+- (IDEGroup *)rootGroup;
+- (void)debugPrintInnerStructure;
+- (void)debugPrintStructure;
+@end
+
+@interface IDEWorkspace : IDEContainer
+- (NSSet *)referencedContainers;
 @end
 
 @interface IDEWorkspaceDocument : NSDocument
 @property (readonly) IDEWorkspace *workspace;
+@end
+
+@interface PBXObject : NSObject
+@end
+
+@interface PBXContainer : PBXObject
+- (NSString *)name;
+@end
+
+@interface PBXTarget : PBXObject
+- (NSString *)name;
+- (BOOL)_looksLikeUnitTestTarget;
+@end
+
+@interface PBXFileType : NSObject
+@end
+
+@interface PBXContainerItem : PBXObject
+@end
+
+@class PBXGroup;
+@interface PBXReference : PBXContainerItem
+- (BOOL)isGroup;
+- (NSString *)name;
+- (NSString *)absolutePath;
+- (PBXGroup *)group;
+- (PBXContainer *)container;
+- (NSSet *)includingTargets;
+- (void)flattenItemsIntoArray:(NSMutableArray *)array;
+@end
+
+@interface PBXGroup : PBXReference
+- (NSArray *)children;
+@end
+
+@interface PBXFileReference : PBXReference
+@end
+
+@interface PBXVariantGroup : PBXReference
+@end
+
+@interface Xcode3Group : IDEGroup
+- (PBXGroup *)group;
+@end
+
+@interface Xcode3Project : IDEContainer
+- (Xcode3Group *)rootGroup;
 @end
