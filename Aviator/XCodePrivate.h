@@ -50,14 +50,6 @@
 - (IDEEditorArea *)editorArea;
 @end
 
-@interface IDEWorkspace : NSObject
-- (NSSet *)referencedContainers;
-@end
-
-@interface IDEWorkspaceDocument : NSDocument
-@property (readonly) IDEWorkspace *workspace;
-@end
-
 @interface DVTModelObject : NSObject
 @end
 
@@ -74,6 +66,14 @@
 - (IDEGroup *)rootGroup;
 - (void)debugPrintInnerStructure;
 - (void)debugPrintStructure;
+@end
+
+@interface IDEWorkspace : IDEContainer
+- (NSSet *)referencedContainers;
+@end
+
+@interface IDEWorkspaceDocument : NSDocument
+@property (readonly) IDEWorkspace *workspace;
 @end
 
 @interface PBXObject : NSObject
@@ -93,10 +93,17 @@
 - (NSString *)absolutePath;
 - (PBXGroup *)group;
 - (PBXContainer *)container;
+- (void)flattenItemsIntoArray:(NSMutableArray *)array;
 @end
 
 @interface PBXGroup : PBXReference
 - (NSArray *)children;
+@end
+
+@interface PBXFileReference : PBXReference
+@end
+
+@interface PBXVariantGroup : PBXReference
 @end
 
 @interface Xcode3Group : IDEGroup

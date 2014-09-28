@@ -1,11 +1,15 @@
 #import "TFFFileSwitcher.h"
 #import "XCodePrivate.h"
 #import "TFFXcodeDocumentNavigator.h"
+#import "TFFFileProvider.h"
 
 @implementation TFFFileSwitcher
 
 + (void)switchToTestOrImplementationFile {
     @try {
+        TFFFileProvider *provider = [[TFFFileProvider alloc] init];
+        NSArray *contents = [provider fileReferences];
+
         IDESourceCodeDocument *document = [TFFXcodeDocumentNavigator currentSourceCodeDocument];
         DVTFilePath *filePath = [document filePath];
         NSURL *fileUrl = [self testOrImplementationFileURLForCurrentFile:[filePath fileURL]];

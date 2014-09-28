@@ -1,6 +1,6 @@
 #import "Aviator.h"
 #import "TFFFileSwitcher.h"
-#import "TFFileProvider.h"
+#import "TFFFileProvider.h"
 
 static Aviator *sharedPlugin;
 
@@ -23,10 +23,6 @@ static Aviator *sharedPlugin;
     if (self = [super init]) {
         [self removeConflictingKeyBinding];
         [self addJumpItem];
-        
-        TFFileProvider *provider = [[TFFileProvider alloc] init];
-        NSArray *contents = [provider flattenedProjectContents];
-        NSLog(@"contents: %@", contents);
     }
     return self;
 }

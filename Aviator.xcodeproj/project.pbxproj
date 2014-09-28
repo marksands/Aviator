@@ -9,7 +9,11 @@
 /* Begin PBXBuildFile section */
 		76225AC619D6792F00755F57 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76225AC519D6792F00755F57 /* AppKit.framework */; };
 		76225AC819D6792F00755F57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76225AC719D6792F00755F57 /* Foundation.framework */; };
-		767455F319D7AA400059AA0E /* TFFileProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 767455F219D7AA400059AA0E /* TFFileProvider.m */; };
+		7624353A19D84278005C2655 /* TFFFileReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 7624353919D84278005C2655 /* TFFFileReference.m */; };
+		7624353D19D84289005C2655 /* TFFGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7624353C19D84289005C2655 /* TFFGroup.m */; };
+		7624354019D843F3005C2655 /* TFFReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 7624353F19D843F3005C2655 /* TFFReference.m */; };
+		7624354419D849FC005C2655 /* TFFVariantGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7624354319D849FC005C2655 /* TFFVariantGroup.m */; };
+		767455F319D7AA400059AA0E /* TFFFileProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 767455F219D7AA400059AA0E /* TFFFileProvider.m */; };
 		76ADCE8A19D6F7CC0072D2FC /* Aviator.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ADCE8419D6F7CC0072D2FC /* Aviator.m */; };
 		76ADCE8B19D6F7CC0072D2FC /* TFFFileSwitcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ADCE8619D6F7CC0072D2FC /* TFFFileSwitcher.m */; };
 		76ADCE8C19D6F7CC0072D2FC /* TFFXcodeDocumentNavigator.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ADCE8819D6F7CC0072D2FC /* TFFXcodeDocumentNavigator.m */; };
@@ -21,8 +25,16 @@
 		76225AC219D6792F00755F57 /* Aviator.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Aviator.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		76225AC519D6792F00755F57 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		76225AC719D6792F00755F57 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		767455F119D7AA400059AA0E /* TFFileProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFFileProvider.h; sourceTree = "<group>"; };
-		767455F219D7AA400059AA0E /* TFFileProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFFileProvider.m; sourceTree = "<group>"; };
+		7624353819D84278005C2655 /* TFFFileReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFFFileReference.h; sourceTree = "<group>"; };
+		7624353919D84278005C2655 /* TFFFileReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFFFileReference.m; sourceTree = "<group>"; };
+		7624353B19D84289005C2655 /* TFFGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFFGroup.h; sourceTree = "<group>"; };
+		7624353C19D84289005C2655 /* TFFGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFFGroup.m; sourceTree = "<group>"; };
+		7624353E19D843F3005C2655 /* TFFReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFFReference.h; sourceTree = "<group>"; };
+		7624353F19D843F3005C2655 /* TFFReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFFReference.m; sourceTree = "<group>"; };
+		7624354219D849FC005C2655 /* TFFVariantGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFFVariantGroup.h; sourceTree = "<group>"; };
+		7624354319D849FC005C2655 /* TFFVariantGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFFVariantGroup.m; sourceTree = "<group>"; };
+		767455F119D7AA400059AA0E /* TFFFileProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFFFileProvider.h; sourceTree = "<group>"; };
+		767455F219D7AA400059AA0E /* TFFFileProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFFFileProvider.m; sourceTree = "<group>"; };
 		76ADCE8319D6F7CC0072D2FC /* Aviator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Aviator.h; path = Aviator/Aviator.h; sourceTree = SOURCE_ROOT; };
 		76ADCE8419D6F7CC0072D2FC /* Aviator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Aviator.m; path = Aviator/Aviator.m; sourceTree = SOURCE_ROOT; };
 		76ADCE8519D6F7CC0072D2FC /* TFFFileSwitcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TFFFileSwitcher.h; path = Aviator/TFFFileSwitcher.h; sourceTree = SOURCE_ROOT; };
@@ -80,8 +92,9 @@
 				76ADCE8419D6F7CC0072D2FC /* Aviator.m */,
 				76ADCE8519D6F7CC0072D2FC /* TFFFileSwitcher.h */,
 				76ADCE8619D6F7CC0072D2FC /* TFFFileSwitcher.m */,
-				767455F119D7AA400059AA0E /* TFFileProvider.h */,
-				767455F219D7AA400059AA0E /* TFFileProvider.m */,
+				767455F119D7AA400059AA0E /* TFFFileProvider.h */,
+				767455F219D7AA400059AA0E /* TFFFileProvider.m */,
+				7624354119D84456005C2655 /* TFFReference */,
 				76ADCE8719D6F7CC0072D2FC /* TFFXcodeDocumentNavigator.h */,
 				76ADCE8819D6F7CC0072D2FC /* TFFXcodeDocumentNavigator.m */,
 				76ADCE8919D6F7CC0072D2FC /* XCodePrivate.h */,
@@ -97,6 +110,21 @@
 				76ADCE8D19D6F7D20072D2FC /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7624354119D84456005C2655 /* TFFReference */ = {
+			isa = PBXGroup;
+			children = (
+				7624353819D84278005C2655 /* TFFFileReference.h */,
+				7624353919D84278005C2655 /* TFFFileReference.m */,
+				7624353B19D84289005C2655 /* TFFGroup.h */,
+				7624353C19D84289005C2655 /* TFFGroup.m */,
+				7624353E19D843F3005C2655 /* TFFReference.h */,
+				7624353F19D843F3005C2655 /* TFFReference.m */,
+				7624354219D849FC005C2655 /* TFFVariantGroup.h */,
+				7624354319D849FC005C2655 /* TFFVariantGroup.m */,
+			);
+			name = TFFReference;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,9 +195,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				767455F319D7AA400059AA0E /* TFFileProvider.m in Sources */,
+				767455F319D7AA400059AA0E /* TFFFileProvider.m in Sources */,
+				7624353A19D84278005C2655 /* TFFFileReference.m in Sources */,
 				76ADCE8A19D6F7CC0072D2FC /* Aviator.m in Sources */,
+				7624354019D843F3005C2655 /* TFFReference.m in Sources */,
 				76ADCE8C19D6F7CC0072D2FC /* TFFXcodeDocumentNavigator.m in Sources */,
+				7624353D19D84289005C2655 /* TFFGroup.m in Sources */,
+				7624354419D849FC005C2655 /* TFFVariantGroup.m in Sources */,
 				76ADCE8B19D6F7CC0072D2FC /* TFFFileSwitcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
