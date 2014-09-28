@@ -29,13 +29,11 @@ static Aviator *sharedPlugin;
 
 #pragma mark - 
 
-// TODO: Rather than remove the item, modify the shortcut key?
 - (void)removeConflictingKeyBinding {
     @try{
         NSMenuItem *fileItem = [[NSApp mainMenu] itemWithTitle:@"File"];
-        NSMenuItem *newMenu = [[[fileItem submenu] itemArray] firstObject];
         NSMenuItem *newWindowItem = [[[[[fileItem submenu] itemArray] firstObject] submenu] itemArray][1];
-        [[newMenu submenu] removeItem:newWindowItem];
+        [newWindowItem setKeyEquivalentModifierMask:NSShiftKeyMask | NSAlternateKeyMask | NSCommandKeyMask];
     } @catch(NSException *) {}
 }
 
