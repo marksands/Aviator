@@ -1,7 +1,9 @@
 #import <Foundation/Foundation.h>
+#import "XCodePrivate.h"
+#import "TFFFileReferenceCollection.h"
 
 @interface TFFFileProvider : NSObject
 
-- (NSArray *)fileReferences;
+- (TFFFileReferenceCollection *)referenceCollectionForSourceCodeDocument:(IDESourceCodeDocument *)sourceCodeDocument;
 
 @end

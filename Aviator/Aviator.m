@@ -1,5 +1,5 @@
 #import "Aviator.h"
-#import "TFFFileSwitcher.h"
+#import "TFFSourceAndTestJumper.h"
 #import "TFFFileProvider.h"
 
 static Aviator *sharedPlugin;
@@ -54,7 +54,7 @@ static Aviator *sharedPlugin;
 }
 
 - (void)jumpToFile {
-    [TFFFileSwitcher switchToTestOrImplementationFile];
+    [TFFSourceAndTestJumper jumpBetweenTestAndImplementationFiles];
 }
 
 @end

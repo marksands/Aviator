@@ -22,6 +22,7 @@
 
 @interface IDESourceCodeDocument : NSDocument
 - (DVTFilePath *)filePath;
+- (NSArray *)knownFileReferences;
 @end
 
 @class DVTDocumentLocation;
@@ -83,6 +84,14 @@
 - (NSString *)name;
 @end
 
+@interface PBXTarget : PBXObject
+- (NSString *)name;
+- (BOOL)_looksLikeUnitTestTarget;
+@end
+
+@interface PBXFileType : NSObject
+@end
+
 @interface PBXContainerItem : PBXObject
 @end
 
@@ -93,6 +102,7 @@
 - (NSString *)absolutePath;
 - (PBXGroup *)group;
 - (PBXContainer *)container;
+- (NSSet *)includingTargets;
 - (void)flattenItemsIntoArray:(NSMutableArray *)array;
 @end
 

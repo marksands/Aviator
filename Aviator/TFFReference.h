@@ -9,4 +9,8 @@
 @property (nonatomic, readonly) NSString *absolutePath;
 @property (nonatomic, readonly) PBXContainer *container;
 
+@property (nonatomic, readonly) BOOL isTestFile;
+@property (nonatomic, readonly) BOOL isSourceFile;
+@property (nonatomic, readonly) BOOL isHeaderFile;
+
 @end
