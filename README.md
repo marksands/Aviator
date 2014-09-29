@@ -13,3 +13,8 @@ This minimal plugin allows you to use the key combo ⇧⌘T to toggle between so
 ### Installation
 
 Install via [Alcatraz](http://alcatraz.io/). In Xcode, choose Window > Package Manager and search for Aviator.
+
+
+### See it in action
+
+![](https://dl.dropboxusercontent.com/u/83392/aviator.gif)
