@@ -12,7 +12,7 @@ This minimal plugin allows you to use the key combo ⇧⌘T to toggle between so
 
 ### Installation
 
-Coming soon to Alcatraz...
+Install via [Alcatraz](https://github.com/supermarin/Alcatraz). In XCode, choose Window > Package Manager and search for Aviator.
 
 ### License
 
