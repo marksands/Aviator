@@ -20,7 +20,18 @@
 		76ADCE8C19D6F7CC0072D2FC /* TFFXcodeDocumentNavigator.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ADCE8819D6F7CC0072D2FC /* TFFXcodeDocumentNavigator.m */; };
 		76ADCE8E19D6F7D20072D2FC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76ADCE8D19D6F7D20072D2FC /* Info.plist */; };
 		76ADCE9019D6F7EC0072D2FC /* Aviator.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = 76ADCE8F19D6F7EC0072D2FC /* Aviator.xcscheme */; };
+		76EA5ED319E0EF7C002F84C7 /* TFFFileProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EA5EA219E0EE38002F84C7 /* TFFFileProviderTests.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		76EA5ED419E0EF84002F84C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 76225ABA19D6792F00755F57 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 76225AC119D6792F00755F57;
+			remoteInfo = Aviator;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		76225AC219D6792F00755F57 /* Aviator.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Aviator.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +58,10 @@
 		76ADCE8919D6F7CC0072D2FC /* XCodePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XCodePrivate.h; path = Aviator/XCodePrivate.h; sourceTree = SOURCE_ROOT; };
 		76ADCE8D19D6F7D20072D2FC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Aviator/Info.plist; sourceTree = SOURCE_ROOT; };
 		76ADCE8F19D6F7EC0072D2FC /* Aviator.xcscheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Aviator.xcscheme; path = Aviator.xcodeproj/xcshareddata/xcschemes/Aviator.xcscheme; sourceTree = SOURCE_ROOT; };
+		76EA5EA219E0EE38002F84C7 /* TFFFileProviderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFFFileProviderTests.m; sourceTree = "<group>"; };
+		76EA5EBA19E0EE40002F84C7 /* Aviator copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Aviator copy-Info.plist"; path = "/Users/mrsand1/Development/Aviator/Aviator copy-Info.plist"; sourceTree = "<absolute>"; };
+		76EA5ECA19E0EF6B002F84C7 /* AviatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AviatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		76EA5ECD19E0EF6B002F84C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +74,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		76EA5EC719E0EF6B002F84C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -66,8 +88,10 @@
 			isa = PBXGroup;
 			children = (
 				76225AC919D6792F00755F57 /* Aviator */,
+				76EA5ECB19E0EF6B002F84C7 /* AviatorTests */,
 				76225AC419D6792F00755F57 /* Frameworks */,
 				76225AC319D6792F00755F57 /* Products */,
+				76EA5EBA19E0EE40002F84C7 /* Aviator copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				76225AC219D6792F00755F57 /* Aviator.xcplugin */,
+				76EA5ECA19E0EF6B002F84C7 /* AviatorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -97,6 +122,7 @@
 				76ADCE8619D6F7CC0072D2FC /* TFFSourceAndTestJumper.m */,
 				767455F119D7AA400059AA0E /* TFFFileProvider.h */,
 				767455F219D7AA400059AA0E /* TFFFileProvider.m */,
+				76EA5EA219E0EE38002F84C7 /* TFFFileProviderTests.m */,
 				7624354119D84456005C2655 /* TFFReference */,
 				76ADCE8719D6F7CC0072D2FC /* TFFXcodeDocumentNavigator.h */,
 				76ADCE8819D6F7CC0072D2FC /* TFFXcodeDocumentNavigator.m */,
@@ -132,6 +158,22 @@
 			name = TFFReference;
 			sourceTree = "<group>";
 		};
+		76EA5ECB19E0EF6B002F84C7 /* AviatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				76EA5ECC19E0EF6B002F84C7 /* Supporting Files */,
+			);
+			path = AviatorTests;
+			sourceTree = "<group>";
+		};
+		76EA5ECC19E0EF6B002F84C7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				76EA5ECD19E0EF6B002F84C7 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -152,6 +194,24 @@
 			productReference = 76225AC219D6792F00755F57 /* Aviator.xcplugin */;
 			productType = "com.apple.product-type.bundle";
 		};
+		76EA5EC919E0EF6B002F84C7 /* AviatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 76EA5ED019E0EF6B002F84C7 /* Build configuration list for PBXNativeTarget "AviatorTests" */;
+			buildPhases = (
+				76EA5EC619E0EF6B002F84C7 /* Sources */,
+				76EA5EC719E0EF6B002F84C7 /* Frameworks */,
+				76EA5EC819E0EF6B002F84C7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				76EA5ED519E0EF84002F84C7 /* PBXTargetDependency */,
+			);
+			name = AviatorTests;
+			productName = AviatorTests;
+			productReference = 76EA5ECA19E0EF6B002F84C7 /* AviatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -162,6 +222,9 @@
 				ORGANIZATIONNAME = "Type440 LLC";
 				TargetAttributes = {
 					76225AC119D6792F00755F57 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					76EA5EC919E0EF6B002F84C7 = {
 						CreatedOnToolsVersion = 6.0;
 					};
 				};
@@ -179,6 +242,7 @@
 			projectRoot = "";
 			targets = (
 				76225AC119D6792F00755F57 /* Aviator */,
+				76EA5EC919E0EF6B002F84C7 /* AviatorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -190,6 +254,13 @@
 			files = (
 				76ADCE9019D6F7EC0072D2FC /* Aviator.xcscheme in Resources */,
 				76ADCE8E19D6F7D20072D2FC /* Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76EA5EC819E0EF6B002F84C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,7 +283,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		76EA5EC619E0EF6B002F84C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76EA5ED319E0EF7C002F84C7 /* TFFFileProviderTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		76EA5ED519E0EF84002F84C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 76225AC119D6792F00755F57 /* Aviator */;
+			targetProxy = 76EA5ED419E0EF84002F84C7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		76225AD119D6792F00755F57 /* Debug */ = {
@@ -320,6 +407,43 @@
 			};
 			name = Release;
 		};
+		76EA5ED119E0EF6B002F84C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AviatorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		76EA5ED219E0EF6B002F84C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AviatorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -340,6 +464,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		76EA5ED019E0EF6B002F84C7 /* Build configuration list for PBXNativeTarget "AviatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76EA5ED119E0EF6B002F84C7 /* Debug */,
+				76EA5ED219E0EF6B002F84C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

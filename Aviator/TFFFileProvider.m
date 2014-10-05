@@ -18,15 +18,13 @@
         
         NSArray *fileReferences = [self fileReferences];
         for (TFFReference *reference in fileReferences) {
-            if ([reference isKindOfClass:TFFFileReference.class]) {
-                if ([[reference name] rangeOfString:fileName].location != NSNotFound) {
-                    if (reference.isTestFile) {
-                        testRef = reference;
-                    } else if (reference.isSourceFile) {
-                        sourceRef = reference;
-                    } else if (reference.isHeaderFile) {
-                        headerRef = reference;
-                    }
+            if ([[reference name] rangeOfString:fileName].location != NSNotFound) {
+                if (reference.isTestFile) {
+                    testRef = reference;
+                } else if (reference.isSourceFile) {
+                    sourceRef = reference;
+                } else if (reference.isHeaderFile) {
+                    headerRef = reference;
                 }
             }
         }
