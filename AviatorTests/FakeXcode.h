@@ -1,10 +1,4 @@
-//
-//  FakeXcode.h
-//  Aviator
-//
-//  Created by SANDS, MARK [AG-Contractor/1000] on 10/5/14.
-//  Copyright (c) 2014 Type440 LLC. All rights reserved.
-//
+#import "XCodePrivate.h"
 
 @implementation DVTDocumentLocation@end
 @implementation IDEEditorOpenSpecifier@end

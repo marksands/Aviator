@@ -6,19 +6,6 @@
 #import "TFFFileProvider.h"
 #import "FakeXcode.h"
 
-#pragma clang diagnostic push // Silence Build Errors
-#pragma clang diagnostic ignored "-Wincomplete-implementation"
-//@implementation DVTDocumentLocation@end
-//@implementation IDEEditorOpenSpecifier@end
-//@implementation PBXReference@end
-//@implementation DVTFilePath@end
-//@implementation IDESourceCodeDocument@end
-//@implementation PBXTarget@end
-//@implementation PBXContainer@end
-//@implementation PBXObject@end
-//@implementation PBXContainerItem@end
-#pragma clang diagnostic pop
-
 #pragma mark -
 
 @interface TFFFileProviderTests : XCTestCase
@@ -28,26 +15,6 @@
 @end
 
 @implementation TFFFileProviderTests
-
-+ (void)load {
-    //dlopen_preflight("/Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Versions/A/IDEKit");
-    //const char *error1 = dlerror();
-    //printf("%s\n", error1);
-
-    //dlopen_preflight("/Applications/Xcode.app/Contents/Frameworks/IDEFoundation.framework/Versions/A/IDEFoundation");
-    //const char *error2 = dlerror();
-    //printf("%s\n", error2);
-    
-    //dlopen_preflight("/Applications/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework/Versions/A/DVTFoundation");
-    //const char *error4 = dlerror();
-    //printf("%s\n", error4);
-
-    //dlopen_preflight("/Applications/Xcode.app/Contents/SharedFrameworks/DVTKit.framework/Versions/A/DVTKit");
-    //const char *error3 = dlerror();
-    //printf("%s\n", error3);
-
-    //[NSThread sleepForTimeInterval:1];
-}
 
 - (void)setUp {
     [super setUp];
