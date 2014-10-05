@@ -116,27 +116,74 @@
     TFFReference *sourceRef = [[TFFReference alloc] initWithPBXReference:mockPBXSourceRef];
     TFFReference *testRef = [[TFFReference alloc] initWithPBXReference:mockPBXTestRef];
     
-    [self stubSourceDocument:@"HanSolo.m"];
-
-    NSArray *fileReferences = @[headerRef, sourceRef, testRef];
-    _testObject = [[TFFFileProvider alloc] initWithFileReferences:fileReferences];
+    _testObject = [[TFFFileProvider alloc] initWithFileReferences:@[headerRef, sourceRef, testRef]];
     
+    [self stubSourceDocument:@"HanSolo.m"];
     TFFFileReferenceCollection *collection = [self.testObject referenceCollectionForSourceCodeDocument:self.sourceCodeDocument];
+    
     XCTAssertEqualObjects(collection.headerFile, headerRef);
     XCTAssertEqualObjects(collection.sourceFile, sourceRef);
     XCTAssertEqualObjects(collection.testFile, testRef);
 }
 
 - (void)testWhenSourceFileExistsWithNoUnitTestThenReferenceCollectionReturnsNilTestFile {
+    PBXFileReferenceDouble *mockPBXHeaderRef = [self stubHeaderFileName:@"HanSolo.h"];
+    PBXFileReferenceDouble *mockPBXSourceRef = [self stubSourceFileName:@"HanSolo.m"];
     
+    TFFReference *headerRef = [[TFFReference alloc] initWithPBXReference:mockPBXHeaderRef];
+    TFFReference *sourceRef = [[TFFReference alloc] initWithPBXReference:mockPBXSourceRef];
+    
+    _testObject = [[TFFFileProvider alloc] initWithFileReferences:@[headerRef, sourceRef]];
+    
+    [self stubSourceDocument:@"HanSolo.m"];
+    TFFFileReferenceCollection *collection = [self.testObject referenceCollectionForSourceCodeDocument:self.sourceCodeDocument];
+    
+    XCTAssertEqualObjects(collection.headerFile, headerRef);
+    XCTAssertEqualObjects(collection.sourceFile, sourceRef);
+    XCTAssertNil(collection.testFile);
 }
 
 - (void)testWhenSourceFileExistsWithUnitTestHavingDifferentNameThenReferenceCollectionReturnsNilTestFile {
+    PBXFileReferenceDouble *mockPBXHeaderRef = [self stubHeaderFileName:@"HanSolo.h"];
+    PBXFileReferenceDouble *mockPBXSourceRef = [self stubSourceFileName:@"HanSolo.m"];
+    PBXFileReferenceDouble *mockPBXTestRef = [self stubTestFileName:@"StarWarsTest.m"];
     
+    TFFReference *headerRef = [[TFFReference alloc] initWithPBXReference:mockPBXHeaderRef];
+    TFFReference *sourceRef = [[TFFReference alloc] initWithPBXReference:mockPBXSourceRef];
+    TFFReference *testRef = [[TFFReference alloc] initWithPBXReference:mockPBXTestRef];
+    
+    _testObject = [[TFFFileProvider alloc] initWithFileReferences:@[headerRef, sourceRef, testRef]];
+    
+    [self stubSourceDocument:@"HanSolo.m"];
+    TFFFileReferenceCollection *collection = [self.testObject referenceCollectionForSourceCodeDocument:self.sourceCodeDocument];
+    
+    XCTAssertEqualObjects(collection.headerFile, headerRef);
+    XCTAssertEqualObjects(collection.sourceFile, sourceRef);
+    XCTAssertNil(collection.testFile);
 }
 
 - (void)testWhenSourceFileExistsWithAnotherSourceFileHavingSimilarNameAndNoUnitTestThenReferenceCollectionReturnsNilTestFile {
+    PBXFileReferenceDouble *mockPBXHeaderRef = [self stubHeaderFileName:@"StarWars.h"];
+    PBXFileReferenceDouble *mockPBXSourceRef = [self stubSourceFileName:@"StarWars.m"];
+
+    PBXFileReferenceDouble *mockPBXHeaderRef2 = [self stubHeaderFileName:@"StarWar.h"];
+    PBXFileReferenceDouble *mockPBXSourceRef2 = [self stubSourceFileName:@"StarWar.m"];
+    PBXFileReferenceDouble *mockPBXTestRef2 = [self stubTestFileName:@"StarWarTests.m"];
+
+    TFFReference *headerRef1 = [[TFFReference alloc] initWithPBXReference:mockPBXHeaderRef];
+    TFFReference *sourceRef1 = [[TFFReference alloc] initWithPBXReference:mockPBXSourceRef];
+    TFFReference *headerRef2 = [[TFFReference alloc] initWithPBXReference:mockPBXHeaderRef2];
+    TFFReference *sourceRef2 = [[TFFReference alloc] initWithPBXReference:mockPBXSourceRef2];
+    TFFReference *testRef2 = [[TFFReference alloc] initWithPBXReference:mockPBXTestRef2];
     
+    _testObject = [[TFFFileProvider alloc] initWithFileReferences:@[headerRef1, sourceRef1, headerRef2, sourceRef2, testRef2]];
+    
+    [self stubSourceDocument:@"StarWars.m"];
+    TFFFileReferenceCollection *collection = [self.testObject referenceCollectionForSourceCodeDocument:self.sourceCodeDocument];
+    
+    XCTAssertEqualObjects(collection.headerFile, headerRef1);
+    XCTAssertEqualObjects(collection.sourceFile, sourceRef1);
+    XCTAssertNil(collection.testFile);
 }
 
 @end
