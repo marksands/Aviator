@@ -25,7 +25,6 @@
 - (NSArray *)knownFileReferences;
 @end
 
-@class DVTDocumentLocation;
 @interface IDEEditorOpenSpecifier : NSObject
 + (IDEEditorOpenSpecifier *)structureEditorOpenSpecifierForDocumentLocation:(DVTDocumentLocation *)documentLocation inWorkspace:(id)workspace error:(NSError *)error;
 @end

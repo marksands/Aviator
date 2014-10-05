@@ -4,7 +4,18 @@
 #import "TFFReference.h"
 #import "TFFFileReferenceCollection.h"
 
+@interface TFFFileProvider ()
+@property (nonatomic, copy) NSArray *fileReferences;
+@end
+
 @implementation TFFFileProvider
+
+- (instancetype)initWithFileReferences:(NSArray *)fileReferences {
+    if (self = [super init]) {
+        _fileReferences = fileReferences;
+    }
+    return self;
+}
 
 - (TFFFileReferenceCollection *)referenceCollectionForSourceCodeDocument:(IDESourceCodeDocument *)sourceCodeDocument {
     if (sourceCodeDocument) {
@@ -16,7 +27,7 @@
         TFFReference *sourceRef;
         TFFReference *testRef;
         
-        NSArray *fileReferences = [self fileReferences];
+        NSArray *fileReferences = self.fileReferences;
         for (TFFReference *reference in fileReferences) {
             if ([[reference name] rangeOfString:fileName].location != NSNotFound) {
                 if (reference.isTestFile) {
@@ -38,19 +49,19 @@
 
 #pragma mark - Private
 
-- (NSArray *)fileReferences {
-    NSArray *projectFiles = [self flattenedProjectContents];
-
-    NSMutableArray *references = [NSMutableArray array];
-    for (PBXReference *pbxReference in projectFiles) {
-        TFFReference *reference = [[TFFReference alloc] initWithPBXReference:pbxReference];
-        if (reference) {
-            [references addObject:reference];
-        }
-    }
-    
-    return [references copy];
-}
+//- (NSArray *)fileReferences {
+//    NSArray *projectFiles = [self flattenedProjectContents];
+//
+//    NSMutableArray *references = [NSMutableArray array];
+//    for (PBXReference *pbxReference in projectFiles) {
+//        TFFReference *reference = [[TFFReference alloc] initWithPBXReference:pbxReference];
+//        if (reference) {
+//            [references addObject:reference];
+//        }
+//    }
+//    
+//    return [references copy];
+//}
 
 - (NSArray *)flattenedProjectContents {
     NSArray *workspaceReferencedContainers = [[[TFFXcodeDocumentNavigator currentWorkspace] referencedContainers] allObjects];

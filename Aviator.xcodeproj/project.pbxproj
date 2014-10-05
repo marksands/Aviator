@@ -15,6 +15,16 @@
 		7624354419D849FC005C2655 /* TFFVariantGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7624354319D849FC005C2655 /* TFFVariantGroup.m */; };
 		7624354719D8520E005C2655 /* TFFFileReferenceCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7624354619D8520E005C2655 /* TFFFileReferenceCollection.m */; };
 		767455F319D7AA400059AA0E /* TFFFileProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 767455F219D7AA400059AA0E /* TFFFileProvider.m */; };
+		767974E619E0F88E0091AAD7 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 767974DA19E0F62A0091AAD7 /* libOCMock.a */; };
+		767974EA19E0FC720091AAD7 /* Aviator.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ADCE8419D6F7CC0072D2FC /* Aviator.m */; };
+		767974EB19E0FC720091AAD7 /* TFFSourceAndTestJumper.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ADCE8619D6F7CC0072D2FC /* TFFSourceAndTestJumper.m */; };
+		767974EC19E0FC720091AAD7 /* TFFFileProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 767455F219D7AA400059AA0E /* TFFFileProvider.m */; };
+		767974ED19E0FC720091AAD7 /* TFFFileReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 7624353919D84278005C2655 /* TFFFileReference.m */; };
+		767974EE19E0FC720091AAD7 /* TFFFileReferenceCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7624354619D8520E005C2655 /* TFFFileReferenceCollection.m */; };
+		767974EF19E0FC720091AAD7 /* TFFGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7624353C19D84289005C2655 /* TFFGroup.m */; };
+		767974F019E0FC720091AAD7 /* TFFReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 7624353F19D843F3005C2655 /* TFFReference.m */; };
+		767974F119E0FC720091AAD7 /* TFFVariantGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7624354319D849FC005C2655 /* TFFVariantGroup.m */; };
+		767974F219E0FC720091AAD7 /* TFFXcodeDocumentNavigator.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ADCE8819D6F7CC0072D2FC /* TFFXcodeDocumentNavigator.m */; };
 		76ADCE8A19D6F7CC0072D2FC /* Aviator.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ADCE8419D6F7CC0072D2FC /* Aviator.m */; };
 		76ADCE8B19D6F7CC0072D2FC /* TFFSourceAndTestJumper.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ADCE8619D6F7CC0072D2FC /* TFFSourceAndTestJumper.m */; };
 		76ADCE8C19D6F7CC0072D2FC /* TFFXcodeDocumentNavigator.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ADCE8819D6F7CC0072D2FC /* TFFXcodeDocumentNavigator.m */; };
@@ -22,16 +32,6 @@
 		76ADCE9019D6F7EC0072D2FC /* Aviator.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = 76ADCE8F19D6F7EC0072D2FC /* Aviator.xcscheme */; };
 		76EA5ED319E0EF7C002F84C7 /* TFFFileProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EA5EA219E0EE38002F84C7 /* TFFFileProviderTests.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		76EA5ED419E0EF84002F84C7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 76225ABA19D6792F00755F57 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 76225AC119D6792F00755F57;
-			remoteInfo = Aviator;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		76225AC219D6792F00755F57 /* Aviator.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Aviator.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +49,18 @@
 		7624354619D8520E005C2655 /* TFFFileReferenceCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFFFileReferenceCollection.m; sourceTree = "<group>"; };
 		767455F119D7AA400059AA0E /* TFFFileProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFFFileProvider.h; sourceTree = "<group>"; };
 		767455F219D7AA400059AA0E /* TFFFileProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFFFileProvider.m; sourceTree = "<group>"; };
+		767974DA19E0F62A0091AAD7 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
+		767974DC19E0F62A0091AAD7 /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
+		767974DD19E0F62A0091AAD7 /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
+		767974DE19E0F62A0091AAD7 /* OCMConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMConstraint.h; sourceTree = "<group>"; };
+		767974DF19E0F62A0091AAD7 /* OCMLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMLocation.h; sourceTree = "<group>"; };
+		767974E019E0F62A0091AAD7 /* OCMMacroState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMMacroState.h; sourceTree = "<group>"; };
+		767974E119E0F62A0091AAD7 /* OCMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMock.h; sourceTree = "<group>"; };
+		767974E219E0F62A0091AAD7 /* OCMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockObject.h; sourceTree = "<group>"; };
+		767974E319E0F62A0091AAD7 /* OCMRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMRecorder.h; sourceTree = "<group>"; };
+		767974E419E0F62A0091AAD7 /* OCMStubRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMStubRecorder.h; sourceTree = "<group>"; };
+		767974F319E0FF970091AAD7 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		7679750119E182A50091AAD7 /* FakeXcode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FakeXcode.h; sourceTree = "<group>"; };
 		76ADCE8319D6F7CC0072D2FC /* Aviator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Aviator.h; path = Aviator/Aviator.h; sourceTree = SOURCE_ROOT; };
 		76ADCE8419D6F7CC0072D2FC /* Aviator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Aviator.m; path = Aviator/Aviator.m; sourceTree = SOURCE_ROOT; };
 		76ADCE8519D6F7CC0072D2FC /* TFFSourceAndTestJumper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TFFSourceAndTestJumper.h; path = Aviator/TFFSourceAndTestJumper.h; sourceTree = SOURCE_ROOT; };
@@ -78,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				767974E619E0F88E0091AAD7 /* libOCMock.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +120,7 @@
 		76225AC419D6792F00755F57 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				767974F319E0FF970091AAD7 /* SenTestingKit.framework */,
 				76225AC519D6792F00755F57 /* AppKit.framework */,
 				76225AC719D6792F00755F57 /* Foundation.framework */,
 			);
@@ -158,10 +172,29 @@
 			name = TFFReference;
 			sourceTree = "<group>";
 		};
+		767974DB19E0F62A0091AAD7 /* OCMock */ = {
+			isa = PBXGroup;
+			children = (
+				767974DC19E0F62A0091AAD7 /* NSNotificationCenter+OCMAdditions.h */,
+				767974DD19E0F62A0091AAD7 /* OCMArg.h */,
+				767974DE19E0F62A0091AAD7 /* OCMConstraint.h */,
+				767974DF19E0F62A0091AAD7 /* OCMLocation.h */,
+				767974E019E0F62A0091AAD7 /* OCMMacroState.h */,
+				767974E119E0F62A0091AAD7 /* OCMock.h */,
+				767974E219E0F62A0091AAD7 /* OCMockObject.h */,
+				767974E319E0F62A0091AAD7 /* OCMRecorder.h */,
+				767974E419E0F62A0091AAD7 /* OCMStubRecorder.h */,
+			);
+			path = OCMock;
+			sourceTree = "<group>";
+		};
 		76EA5ECB19E0EF6B002F84C7 /* AviatorTests */ = {
 			isa = PBXGroup;
 			children = (
+				767974DA19E0F62A0091AAD7 /* libOCMock.a */,
+				767974DB19E0F62A0091AAD7 /* OCMock */,
 				76EA5ECC19E0EF6B002F84C7 /* Supporting Files */,
+				7679750119E182A50091AAD7 /* FakeXcode.h */,
 			);
 			path = AviatorTests;
 			sourceTree = "<group>";
@@ -205,7 +238,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				76EA5ED519E0EF84002F84C7 /* PBXTargetDependency */,
 			);
 			name = AviatorTests;
 			productName = AviatorTests;
@@ -287,19 +319,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				767974EA19E0FC720091AAD7 /* Aviator.m in Sources */,
+				767974EB19E0FC720091AAD7 /* TFFSourceAndTestJumper.m in Sources */,
+				767974EC19E0FC720091AAD7 /* TFFFileProvider.m in Sources */,
+				767974ED19E0FC720091AAD7 /* TFFFileReference.m in Sources */,
+				767974EE19E0FC720091AAD7 /* TFFFileReferenceCollection.m in Sources */,
+				767974EF19E0FC720091AAD7 /* TFFGroup.m in Sources */,
+				767974F019E0FC720091AAD7 /* TFFReference.m in Sources */,
+				767974F119E0FC720091AAD7 /* TFFVariantGroup.m in Sources */,
+				767974F219E0FC720091AAD7 /* TFFXcodeDocumentNavigator.m in Sources */,
 				76EA5ED319E0EF7C002F84C7 /* TFFFileProviderTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		76EA5ED519E0EF84002F84C7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 76225AC119D6792F00755F57 /* Aviator */;
-			targetProxy = 76EA5ED419E0EF84002F84C7 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		76225AD119D6792F00755F57 /* Debug */ = {
@@ -411,17 +444,37 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "$(HOME)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Vendor",
+					/Applications/Xcode.app/Contents/Frameworks,
+					/Applications/Xcode.app/Contents/SharedFrameworks,
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/Vendor",
+				);
 				INFOPLIST_FILE = AviatorTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendor",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-undefined",
+					dynamic_lookup,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -432,13 +485,33 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "$(HOME)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Vendor",
+					/Applications/Xcode.app/Contents/Frameworks,
+					/Applications/Xcode.app/Contents/SharedFrameworks,
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/Vendor",
 				);
 				INFOPLIST_FILE = AviatorTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendor",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-undefined",
+					dynamic_lookup,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -472,6 +545,7 @@
 				76EA5ED219E0EF6B002F84C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

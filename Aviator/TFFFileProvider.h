@@ -4,6 +4,7 @@
 
 @interface TFFFileProvider : NSObject
 
+- (instancetype)initWithFileReferences:(NSArray *)fileReferences;
 - (TFFFileReferenceCollection *)referenceCollectionForSourceCodeDocument:(IDESourceCodeDocument *)sourceCodeDocument;
 
 @end
