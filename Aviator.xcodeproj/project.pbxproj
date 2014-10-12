@@ -33,7 +33,6 @@
 		76ADCE8A19D6F7CC0072D2FC /* Aviator.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ADCE8419D6F7CC0072D2FC /* Aviator.m */; };
 		76ADCE8B19D6F7CC0072D2FC /* TFFFileSwitcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ADCE8619D6F7CC0072D2FC /* TFFFileSwitcher.m */; };
 		76ADCE8C19D6F7CC0072D2FC /* TFFXcodeDocumentNavigator.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ADCE8819D6F7CC0072D2FC /* TFFXcodeDocumentNavigator.m */; };
-		76ADCE8E19D6F7D20072D2FC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76ADCE8D19D6F7D20072D2FC /* Info.plist */; };
 		76ADCE9019D6F7EC0072D2FC /* Aviator.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = 76ADCE8F19D6F7EC0072D2FC /* Aviator.xcscheme */; };
 		76EA5ED319E0EF7C002F84C7 /* TFFFileProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EA5EA219E0EE38002F84C7 /* TFFFileProviderTests.m */; };
 /* End PBXBuildFile section */
@@ -306,7 +305,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				76ADCE9019D6F7EC0072D2FC /* Aviator.xcscheme in Resources */,
-				76ADCE8E19D6F7D20072D2FC /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
