@@ -1,6 +1,8 @@
 #import "Aviator.h"
-#import "TFFSourceAndTestJumper.h"
+#import "TFFFileSwitcher.h"
 #import "TFFFileProvider.h"
+#import "TFFXcodeDocumentNavigator.h"
+#import "TFFFileReferenceProvider.h"
 
 static Aviator *sharedPlugin;
 
@@ -53,7 +55,13 @@ static Aviator *sharedPlugin;
 }
 
 - (void)jumpToFile {
-    [TFFSourceAndTestJumper jumpBetweenTestAndImplementationFiles];
+    TFFFileReferenceProvider *fileReferenceProvider = [[TFFFileReferenceProvider alloc] init];
+    NSArray *fileReferences = [fileReferenceProvider fileReferences];
+    
+    TFFFileProvider *fileProvider = [[TFFFileProvider alloc] initWithFileReferences:fileReferences];
+    TFFFileSwitcher *fileSwitcher = [[TFFFileSwitcher alloc] initWithFileProvider:fileProvider];
+    
+    [fileSwitcher switchBetweenReferenceCollectionFilesForCurrentSourceDocument:[TFFXcodeDocumentNavigator currentSourceCodeDocument]];
 }
 
 @end

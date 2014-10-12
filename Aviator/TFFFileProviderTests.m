@@ -74,6 +74,11 @@
 
 #pragma mark -
 
+- (void)testWhenSourceFileIsNilThenReferenceCollectionReturnsNil {
+    TFFFileReferenceCollection *collection = [self.testObject referenceCollectionForSourceCodeDocument:nil];
+    XCTAssertNil(collection);
+}
+
 - (void)testWhenSourceFileExistsWithSourceFileAndUnitTestThenReferenceCollectionReturnsExpectedProperties {
     PBXFileReferenceDouble *mockPBXHeaderRef = [self stubHeaderFileName:@"HanSolo.h"];
     PBXFileReferenceDouble *mockPBXSourceRef = [self stubSourceFileName:@"HanSolo.m"];

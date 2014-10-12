@@ -14,10 +14,11 @@
 		7624354019D843F3005C2655 /* TFFReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 7624353F19D843F3005C2655 /* TFFReference.m */; };
 		7624354419D849FC005C2655 /* TFFVariantGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7624354319D849FC005C2655 /* TFFVariantGroup.m */; };
 		7624354719D8520E005C2655 /* TFFFileReferenceCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7624354619D8520E005C2655 /* TFFFileReferenceCollection.m */; };
+		766CE06019EAF0F5003B1A9E /* TFFFileSwitcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 766CE05F19EAF0F5003B1A9E /* TFFFileSwitcherTests.m */; };
 		767455F319D7AA400059AA0E /* TFFFileProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 767455F219D7AA400059AA0E /* TFFFileProvider.m */; };
 		767974E619E0F88E0091AAD7 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 767974DA19E0F62A0091AAD7 /* libOCMock.a */; };
 		767974EA19E0FC720091AAD7 /* Aviator.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ADCE8419D6F7CC0072D2FC /* Aviator.m */; };
-		767974EB19E0FC720091AAD7 /* TFFSourceAndTestJumper.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ADCE8619D6F7CC0072D2FC /* TFFSourceAndTestJumper.m */; };
+		767974EB19E0FC720091AAD7 /* TFFFileSwitcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ADCE8619D6F7CC0072D2FC /* TFFFileSwitcher.m */; };
 		767974EC19E0FC720091AAD7 /* TFFFileProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 767455F219D7AA400059AA0E /* TFFFileProvider.m */; };
 		767974ED19E0FC720091AAD7 /* TFFFileReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 7624353919D84278005C2655 /* TFFFileReference.m */; };
 		767974EE19E0FC720091AAD7 /* TFFFileReferenceCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7624354619D8520E005C2655 /* TFFFileReferenceCollection.m */; };
@@ -25,8 +26,12 @@
 		767974F019E0FC720091AAD7 /* TFFReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 7624353F19D843F3005C2655 /* TFFReference.m */; };
 		767974F119E0FC720091AAD7 /* TFFVariantGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7624354319D849FC005C2655 /* TFFVariantGroup.m */; };
 		767974F219E0FC720091AAD7 /* TFFXcodeDocumentNavigator.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ADCE8819D6F7CC0072D2FC /* TFFXcodeDocumentNavigator.m */; };
+		767C4B3B19EB1F78008734F6 /* TFFFileReferenceProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 767C4B3A19EB1F78008734F6 /* TFFFileReferenceProvider.m */; };
+		76A2966219EAF95F001D3AA2 /* FakeXcode.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A2966119EAF95F001D3AA2 /* FakeXcode.m */; };
+		76A2966519EB0C7F001D3AA2 /* TFFFileSwitcherDouble.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A2966419EB0C7F001D3AA2 /* TFFFileSwitcherDouble.m */; };
+		76A2966A19EB0CF9001D3AA2 /* TFFXcodeDocumentNavigatorFake.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A2966919EB0CF9001D3AA2 /* TFFXcodeDocumentNavigatorFake.m */; };
 		76ADCE8A19D6F7CC0072D2FC /* Aviator.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ADCE8419D6F7CC0072D2FC /* Aviator.m */; };
-		76ADCE8B19D6F7CC0072D2FC /* TFFSourceAndTestJumper.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ADCE8619D6F7CC0072D2FC /* TFFSourceAndTestJumper.m */; };
+		76ADCE8B19D6F7CC0072D2FC /* TFFFileSwitcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ADCE8619D6F7CC0072D2FC /* TFFFileSwitcher.m */; };
 		76ADCE8C19D6F7CC0072D2FC /* TFFXcodeDocumentNavigator.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ADCE8819D6F7CC0072D2FC /* TFFXcodeDocumentNavigator.m */; };
 		76ADCE8E19D6F7D20072D2FC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76ADCE8D19D6F7D20072D2FC /* Info.plist */; };
 		76ADCE9019D6F7EC0072D2FC /* Aviator.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = 76ADCE8F19D6F7EC0072D2FC /* Aviator.xcscheme */; };
@@ -47,6 +52,7 @@
 		7624354319D849FC005C2655 /* TFFVariantGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFFVariantGroup.m; sourceTree = "<group>"; };
 		7624354519D8520E005C2655 /* TFFFileReferenceCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFFFileReferenceCollection.h; sourceTree = "<group>"; };
 		7624354619D8520E005C2655 /* TFFFileReferenceCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFFFileReferenceCollection.m; sourceTree = "<group>"; };
+		766CE05F19EAF0F5003B1A9E /* TFFFileSwitcherTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFFFileSwitcherTests.m; sourceTree = "<group>"; };
 		767455F119D7AA400059AA0E /* TFFFileProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFFFileProvider.h; sourceTree = "<group>"; };
 		767455F219D7AA400059AA0E /* TFFFileProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFFFileProvider.m; sourceTree = "<group>"; };
 		767974DA19E0F62A0091AAD7 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
@@ -61,10 +67,17 @@
 		767974E419E0F62A0091AAD7 /* OCMStubRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMStubRecorder.h; sourceTree = "<group>"; };
 		767974F319E0FF970091AAD7 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		7679750119E182A50091AAD7 /* FakeXcode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FakeXcode.h; sourceTree = "<group>"; };
+		767C4B3919EB1F78008734F6 /* TFFFileReferenceProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFFFileReferenceProvider.h; sourceTree = "<group>"; };
+		767C4B3A19EB1F78008734F6 /* TFFFileReferenceProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFFFileReferenceProvider.m; sourceTree = "<group>"; };
+		76A2966119EAF95F001D3AA2 /* FakeXcode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FakeXcode.m; sourceTree = "<group>"; };
+		76A2966319EB0C7F001D3AA2 /* TFFFileSwitcherDouble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFFFileSwitcherDouble.h; sourceTree = "<group>"; };
+		76A2966419EB0C7F001D3AA2 /* TFFFileSwitcherDouble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFFFileSwitcherDouble.m; sourceTree = "<group>"; };
+		76A2966819EB0CF9001D3AA2 /* TFFXcodeDocumentNavigatorFake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFFXcodeDocumentNavigatorFake.h; sourceTree = "<group>"; };
+		76A2966919EB0CF9001D3AA2 /* TFFXcodeDocumentNavigatorFake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFFXcodeDocumentNavigatorFake.m; sourceTree = "<group>"; };
 		76ADCE8319D6F7CC0072D2FC /* Aviator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Aviator.h; path = Aviator/Aviator.h; sourceTree = SOURCE_ROOT; };
 		76ADCE8419D6F7CC0072D2FC /* Aviator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Aviator.m; path = Aviator/Aviator.m; sourceTree = SOURCE_ROOT; };
-		76ADCE8519D6F7CC0072D2FC /* TFFSourceAndTestJumper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TFFSourceAndTestJumper.h; path = Aviator/TFFSourceAndTestJumper.h; sourceTree = SOURCE_ROOT; };
-		76ADCE8619D6F7CC0072D2FC /* TFFSourceAndTestJumper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TFFSourceAndTestJumper.m; path = Aviator/TFFSourceAndTestJumper.m; sourceTree = SOURCE_ROOT; };
+		76ADCE8519D6F7CC0072D2FC /* TFFFileSwitcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TFFFileSwitcher.h; path = Aviator/TFFFileSwitcher.h; sourceTree = SOURCE_ROOT; };
+		76ADCE8619D6F7CC0072D2FC /* TFFFileSwitcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TFFFileSwitcher.m; path = Aviator/TFFFileSwitcher.m; sourceTree = SOURCE_ROOT; };
 		76ADCE8719D6F7CC0072D2FC /* TFFXcodeDocumentNavigator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TFFXcodeDocumentNavigator.h; path = Aviator/TFFXcodeDocumentNavigator.h; sourceTree = SOURCE_ROOT; };
 		76ADCE8819D6F7CC0072D2FC /* TFFXcodeDocumentNavigator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TFFXcodeDocumentNavigator.m; path = Aviator/TFFXcodeDocumentNavigator.m; sourceTree = SOURCE_ROOT; };
 		76ADCE8919D6F7CC0072D2FC /* XCodePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XCodePrivate.h; path = Aviator/XCodePrivate.h; sourceTree = SOURCE_ROOT; };
@@ -132,14 +145,21 @@
 			children = (
 				76ADCE8319D6F7CC0072D2FC /* Aviator.h */,
 				76ADCE8419D6F7CC0072D2FC /* Aviator.m */,
-				76ADCE8519D6F7CC0072D2FC /* TFFSourceAndTestJumper.h */,
-				76ADCE8619D6F7CC0072D2FC /* TFFSourceAndTestJumper.m */,
+				76ADCE8519D6F7CC0072D2FC /* TFFFileSwitcher.h */,
+				76ADCE8619D6F7CC0072D2FC /* TFFFileSwitcher.m */,
+				76A2966319EB0C7F001D3AA2 /* TFFFileSwitcherDouble.h */,
+				76A2966419EB0C7F001D3AA2 /* TFFFileSwitcherDouble.m */,
+				766CE05F19EAF0F5003B1A9E /* TFFFileSwitcherTests.m */,
 				767455F119D7AA400059AA0E /* TFFFileProvider.h */,
 				767455F219D7AA400059AA0E /* TFFFileProvider.m */,
 				76EA5EA219E0EE38002F84C7 /* TFFFileProviderTests.m */,
+				767C4B3919EB1F78008734F6 /* TFFFileReferenceProvider.h */,
+				767C4B3A19EB1F78008734F6 /* TFFFileReferenceProvider.m */,
 				7624354119D84456005C2655 /* TFFReference */,
 				76ADCE8719D6F7CC0072D2FC /* TFFXcodeDocumentNavigator.h */,
 				76ADCE8819D6F7CC0072D2FC /* TFFXcodeDocumentNavigator.m */,
+				76A2966819EB0CF9001D3AA2 /* TFFXcodeDocumentNavigatorFake.h */,
+				76A2966919EB0CF9001D3AA2 /* TFFXcodeDocumentNavigatorFake.m */,
 				76ADCE8919D6F7CC0072D2FC /* XCodePrivate.h */,
 				76225ACA19D6792F00755F57 /* Supporting Files */,
 			);
@@ -195,6 +215,7 @@
 				767974DB19E0F62A0091AAD7 /* OCMock */,
 				76EA5ECC19E0EF6B002F84C7 /* Supporting Files */,
 				7679750119E182A50091AAD7 /* FakeXcode.h */,
+				76A2966119EAF95F001D3AA2 /* FakeXcode.m */,
 			);
 			path = AviatorTests;
 			sourceTree = "<group>";
@@ -306,12 +327,13 @@
 				767455F319D7AA400059AA0E /* TFFFileProvider.m in Sources */,
 				7624353A19D84278005C2655 /* TFFFileReference.m in Sources */,
 				76ADCE8A19D6F7CC0072D2FC /* Aviator.m in Sources */,
+				767C4B3B19EB1F78008734F6 /* TFFFileReferenceProvider.m in Sources */,
 				7624354019D843F3005C2655 /* TFFReference.m in Sources */,
 				76ADCE8C19D6F7CC0072D2FC /* TFFXcodeDocumentNavigator.m in Sources */,
 				7624354719D8520E005C2655 /* TFFFileReferenceCollection.m in Sources */,
 				7624353D19D84289005C2655 /* TFFGroup.m in Sources */,
 				7624354419D849FC005C2655 /* TFFVariantGroup.m in Sources */,
-				76ADCE8B19D6F7CC0072D2FC /* TFFSourceAndTestJumper.m in Sources */,
+				76ADCE8B19D6F7CC0072D2FC /* TFFFileSwitcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,12 +341,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76A2966A19EB0CF9001D3AA2 /* TFFXcodeDocumentNavigatorFake.m in Sources */,
+				76A2966519EB0C7F001D3AA2 /* TFFFileSwitcherDouble.m in Sources */,
+				76A2966219EAF95F001D3AA2 /* FakeXcode.m in Sources */,
 				767974EA19E0FC720091AAD7 /* Aviator.m in Sources */,
-				767974EB19E0FC720091AAD7 /* TFFSourceAndTestJumper.m in Sources */,
+				767974EB19E0FC720091AAD7 /* TFFFileSwitcher.m in Sources */,
 				767974EC19E0FC720091AAD7 /* TFFFileProvider.m in Sources */,
 				767974ED19E0FC720091AAD7 /* TFFFileReference.m in Sources */,
 				767974EE19E0FC720091AAD7 /* TFFFileReferenceCollection.m in Sources */,
 				767974EF19E0FC720091AAD7 /* TFFGroup.m in Sources */,
+				766CE06019EAF0F5003B1A9E /* TFFFileSwitcherTests.m in Sources */,
 				767974F019E0FC720091AAD7 /* TFFReference.m in Sources */,
 				767974F119E0FC720091AAD7 /* TFFVariantGroup.m in Sources */,
 				767974F219E0FC720091AAD7 /* TFFXcodeDocumentNavigator.m in Sources */,
