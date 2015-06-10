@@ -23,20 +23,27 @@ static Aviator *sharedPlugin;
 
 - (id)init {
     if (self = [super init]) {
-        [self removeConflictingKeyBinding];
-        [self addJumpItem];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(applicationDidFinishLaunchingNotification:)
+                                                     name:NSApplicationDidFinishLaunchingNotification
+                                                   object:nil];
     }
     return self;
 }
 
-#pragma mark - 
+- (void)applicationDidFinishLaunchingNotification:(NSNotification *)notification {
+    [self removeConflictingKeyBinding];
+    [self addJumpItem];
+}
+
+#pragma mark -
 
 - (void)removeConflictingKeyBinding {
     @try{
         NSMenuItem *fileItem = [[NSApp mainMenu] itemWithTitle:@"File"];
         NSMenuItem *newWindowItem = [[[[[fileItem submenu] itemArray] firstObject] submenu] itemArray][1];
         [newWindowItem setKeyEquivalentModifierMask:NSShiftKeyMask | NSAlternateKeyMask | NSCommandKeyMask];
-    } @catch(NSException *) {}
+    } @catch(NSException *e) { NSLog(@"prevented plugin crash from removeConflictingKeyBinding : %@", e); }
 }
 
 // TODO: Investigate why "Navigate" doesn't work
