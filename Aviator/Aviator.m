@@ -16,17 +16,24 @@ static Aviator *sharedPlugin;
     NSString *currentApplicationName = [[NSBundle mainBundle] infoDictionary][@"CFBundleName"];
     if ([currentApplicationName isEqual:@"Xcode"]) {
         dispatch_once(&onceToken, ^{
-            sharedPlugin = [[self alloc] init];
+            sharedPlugin = [[Aviator alloc] init];
         });
     }
 }
 
-- (id)init {
-    if (self = [super init]) {
-        [self removeConflictingKeyBinding];
-        [self addJumpItem];
-    }
+- (instancetype)init {
+    self = [super init];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationDidFinishLaunchingNotification:)
+                                                 name:NSApplicationDidFinishLaunchingNotification
+                                               object:nil];
     return self;
+}
+
+- (void)applicationDidFinishLaunchingNotification:(NSNotification *)notification {
+    [self removeConflictingKeyBinding];
+    [self addJumpItem];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSApplicationDidFinishLaunchingNotification object:nil];
 }
 
 #pragma mark - 
