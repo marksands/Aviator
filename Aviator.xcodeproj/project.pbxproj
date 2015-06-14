@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4DE277F91B2E1B6200C72221 /* TFFFileReferenceProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 767C4B3A19EB1F78008734F6 /* TFFFileReferenceProvider.m */; };
 		76225AC619D6792F00755F57 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76225AC519D6792F00755F57 /* AppKit.framework */; };
 		76225AC819D6792F00755F57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76225AC719D6792F00755F57 /* Foundation.framework */; };
 		7624353A19D84278005C2655 /* TFFFileReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 7624353919D84278005C2655 /* TFFFileReference.m */; };
@@ -339,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DE277F91B2E1B6200C72221 /* TFFFileReferenceProvider.m in Sources */,
 				76A2966A19EB0CF9001D3AA2 /* TFFXcodeDocumentNavigatorFake.m in Sources */,
 				76A2966519EB0C7F001D3AA2 /* TFFFileSwitcherDouble.m in Sources */,
 				76A2966219EAF95F001D3AA2 /* FakeXcode.m in Sources */,

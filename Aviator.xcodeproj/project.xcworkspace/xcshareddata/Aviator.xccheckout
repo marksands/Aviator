@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>B3E4DED7-EF92-49CA-BB1F-AB64658CE043</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Aviator</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>5495D1492B598E5C0EC55C4B8D7C28F6E6878D34</key>
 		<string>github.com:marksands/Aviator.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Aviator.xcodeproj</string>
+	<string>Aviator.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>5495D1492B598E5C0EC55C4B8D7C28F6E6878D34</key>
