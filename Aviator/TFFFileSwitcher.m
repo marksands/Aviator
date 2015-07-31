@@ -20,17 +20,17 @@
     @try {
         TFFFileReferenceCollection *referenceCollection = [self.fileProvider referenceCollectionForSourceCodeDocument:sourceCodeDocument];
         
-        NSString *fileName = [[[sourceCodeDocument filePath] fileURL] lastPathComponent];
+        NSString *fileName = sourceCodeDocument.filePath.fileURL.lastPathComponent;
         if ([referenceCollection.headerFile.name isEqualToString:fileName] || [referenceCollection.sourceFile.name isEqualToString:fileName]) {
-            [[self XcodeNavigatorClassSeam] jumpToFileURL:[NSURL fileURLWithPath:referenceCollection.testFile.absolutePath]];
+            [self.XcodeNavigatorClassSeam jumpToFileURL:[NSURL fileURLWithPath:referenceCollection.testFile.absolutePath]];
         } else if ([referenceCollection.testFile.name isEqualToString:fileName]) {
-            [[self XcodeNavigatorClassSeam] jumpToFileURL:[NSURL fileURLWithPath:referenceCollection.sourceFile.absolutePath]];
+            [self.XcodeNavigatorClassSeam jumpToFileURL:[NSURL fileURLWithPath:referenceCollection.sourceFile.absolutePath]];
         }
     } @catch (NSException *) {}
 }
 
 - (Class)XcodeNavigatorClassSeam {
-    return [TFFXcodeDocumentNavigator class];
+    return TFFXcodeDocumentNavigator.class;
 }
 
 @end

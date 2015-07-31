@@ -19,17 +19,17 @@
 
 - (TFFFileReferenceCollection *)referenceCollectionForSourceCodeDocument:(IDESourceCodeDocument *)sourceCodeDocument {
     if (sourceCodeDocument) {
-        DVTFilePath *filePath = [sourceCodeDocument filePath];
-        NSString *fileName = [[filePath fileURL] lastPathComponent];
+        DVTFilePath *filePath = sourceCodeDocument.filePath;
+        NSString *fileName = filePath.fileURL.lastPathComponent;
         fileName = [self fileNameByStrippingExtensionAndLastOccuranceOfTest:fileName];
         
-        TFFReference *headerRef;
-        TFFReference *sourceRef;
-        TFFReference *testRef;
+        TFFReference *headerRef = nil;
+        TFFReference *sourceRef = nil;
+        TFFReference *testRef = nil;
         
         NSArray *fileReferences = self.fileReferences;
         for (TFFReference *reference in fileReferences) {
-            if ([[reference name] rangeOfString:fileName].location != NSNotFound) {
+            if ([reference.name rangeOfString:fileName].location != NSNotFound) {
                 if (reference.isTestFile) {
                     testRef = reference;
                 } else if (reference.isSourceFile) {
@@ -40,9 +40,7 @@
             }
         }
         
-        return [[TFFFileReferenceCollection alloc] initWithHeaderFileReference:headerRef
-                                                           sourceFileReference:sourceRef
-                                                             testFileReference:testRef];
+        return [[TFFFileReferenceCollection alloc] initWithHeaderFileReference:headerRef sourceFileReference:sourceRef testFileReference:testRef];
     }
     return nil;
 }

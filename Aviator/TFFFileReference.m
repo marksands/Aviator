@@ -2,7 +2,9 @@
 #import "XCodePrivate.h"
 
 @interface TFFFileReference ()
+
 @property (nonatomic, readonly) PBXFileReference *pbxFileReference;
+
 @end
 
 @implementation TFFFileReference
@@ -16,7 +18,7 @@
         _pbxFileReference = pbxReference;
         
         NSSet *targets = [self.pbxFileReference includingTargets];
-        if (targets.count > 0) {
+        if (targets.count) {
             _isTestFile = YES;
         } else {
             _isHeaderFile = YES;
@@ -29,7 +31,7 @@
         }
         
         if (!self.isTestFile) {
-            if ([[[self.pbxFileReference name] pathExtension] isEqualToString:@"m"]) {
+            if ([self.pbxFileReference.name.pathExtension isEqualToString:@"m"]) {
                 _isSourceFile = YES;
             } else {
                 _isHeaderFile = YES;

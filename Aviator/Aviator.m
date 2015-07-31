@@ -6,9 +6,6 @@
 
 static Aviator *sharedPlugin;
 
-@interface Aviator()
-@end
-
 @implementation Aviator
 
 + (void)pluginDidLoad:(NSBundle *)plugin {
@@ -68,7 +65,7 @@ static Aviator *sharedPlugin;
     TFFFileProvider *fileProvider = [[TFFFileProvider alloc] initWithFileReferences:fileReferences];
     TFFFileSwitcher *fileSwitcher = [[TFFFileSwitcher alloc] initWithFileProvider:fileProvider];
     
-    [fileSwitcher switchBetweenReferenceCollectionFilesForCurrentSourceDocument:[TFFXcodeDocumentNavigator currentSourceCodeDocument]];
+    [fileSwitcher switchBetweenReferenceCollectionFilesForCurrentSourceDocument:TFFXcodeDocumentNavigator.currentSourceCodeDocument];
 }
 
 @end

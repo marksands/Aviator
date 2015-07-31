@@ -1,68 +1,59 @@
 #import "TFFXcodeDocumentNavigator.h"
 
 @interface TFFXcodeDocumentNavigator ()
+
 + (IDEEditorContext *)currentEditorContext;
 + (id)currentEditor;
 + (IDEWorkspaceDocument *)currentWorkspaceDocument;
 + (IDEWorkspace *)currentWorkspace;
+
 @end
 
 @implementation TFFXcodeDocumentNavigator
 
 + (IDEEditorContext *)currentEditorContext {
+    IDEEditorContext *editorContext = nil;
     NSWindowController *currentWindowController = [[NSApp keyWindow] windowController];
     if ([currentWindowController isKindOfClass:NSClassFromString(@"IDEWorkspaceWindowController")]) {
-        IDEWorkspaceWindowController *workspaceController = (IDEWorkspaceWindowController *)currentWindowController;
-        IDEEditorArea *editorArea = [workspaceController editorArea];
-        return [editorArea lastActiveEditorContext];
+        IDEEditorArea *editorArea = [(IDEWorkspaceWindowController *)currentWindowController editorArea];
+        editorContext = editorArea.lastActiveEditorContext;
     }
-    return nil;
+    return editorContext;
 }
 
 + (id)currentEditor {
-    IDEEditorContext *currentEditorContext = [self currentEditorContext];
-    if (currentEditorContext) {
-        return [currentEditorContext editor];
-    }
-    return nil;
+    return self.currentEditorContext.editor;
 }
 
 + (IDEWorkspaceDocument *)currentWorkspaceDocument {
+    IDEWorkspaceDocument *workspaceDocument = nil;
     NSWindowController *currentWindowController = [[NSApp keyWindow] windowController];
-    id document = [currentWindowController document];
-    if (currentWindowController && [document isKindOfClass:NSClassFromString(@"IDEWorkspaceDocument")]) {
-        return (IDEWorkspaceDocument *)document;
+    if (currentWindowController && [currentWindowController.document isKindOfClass:NSClassFromString(@"IDEWorkspaceDocument")]) {
+        workspaceDocument = (IDEWorkspaceDocument *)currentWindowController.document;
     }
-    return nil;
+    return workspaceDocument;
 }
 
 + (IDEWorkspace *)currentWorkspace {
-    return [[self currentWorkspaceDocument] workspace];
+    return self.currentWorkspaceDocument.workspace;
 }
 
 + (IDESourceCodeDocument *)currentSourceCodeDocument {
-    if ([[self currentEditor] isKindOfClass:NSClassFromString(@"IDESourceCodeEditor")]) {
-        IDESourceCodeEditor *editor = [self currentEditor];
-        return editor.sourceCodeDocument;
+    IDESourceCodeDocument *sourceCodeDocument = nil;
+    
+    if ([self.currentEditor isKindOfClass:NSClassFromString(@"IDESourceCodeEditor")]) {
+        sourceCodeDocument = [self.currentEditor sourceCodeDocument];
+    } else if ([self.currentEditor isKindOfClass:NSClassFromString(@"IDESourceCodeComparisonEditor")] && [[self.currentEditor primaryDocument] isKindOfClass:NSClassFromString(@"IDESourceCodeDocument")]) {
+        sourceCodeDocument = (IDESourceCodeDocument *)[self.currentEditor primaryDocument];
     }
     
-    if ([[self currentEditor] isKindOfClass:NSClassFromString(@"IDESourceCodeComparisonEditor")]) {
-        IDESourceCodeComparisonEditor *editor = [self currentEditor];
-        if ([[editor primaryDocument] isKindOfClass:NSClassFromString(@"IDESourceCodeDocument")]) {
-            IDESourceCodeDocument *document = (IDESourceCodeDocument *)editor.primaryDocument;
-            return document;
-        }
-    }
-    
-    return nil;
+    return sourceCodeDocument;
 }
 
 + (void)jumpToFileURL:(NSURL *)fileURL {
     DVTDocumentLocation *documentLocation = [[DVTDocumentLocation alloc] initWithDocumentURL:fileURL timestamp:nil];
-    IDEEditorOpenSpecifier *openSpecifier = [IDEEditorOpenSpecifier structureEditorOpenSpecifierForDocumentLocation:documentLocation
-                                                                                                        inWorkspace:[self currentWorkspace]
-                                                                                                              error:nil];
-    [[self currentEditorContext] openEditorOpenSpecifier:openSpecifier];
+    IDEEditorOpenSpecifier *openSpecifier = [IDEEditorOpenSpecifier structureEditorOpenSpecifierForDocumentLocation:documentLocation inWorkspace:self.currentWorkspace error:nil];
+    [self.currentEditorContext openEditorOpenSpecifier:openSpecifier];
 }
 
 @end

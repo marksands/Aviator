@@ -4,7 +4,7 @@
 @implementation TFFFileSwitcherDouble
 
 - (Class)XcodeNavigatorClassSeam {
-    return [TFFXcodeDocumentNavigatorFake class];
+    return TFFXcodeDocumentNavigatorFake.class;
 }
 
 @end

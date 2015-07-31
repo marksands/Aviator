@@ -13,3 +13,5 @@ xcuserdata
 *.xccheckout
 *.moved-aside
 *.xcuserstate
+
+.idea*

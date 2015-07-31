@@ -5,10 +5,11 @@
 #import "TFFFileProvider.h"
 #import "TFFXcodeDocumentNavigatorFake.h"
 
-@interface TFFFileSwitcherTests : XCTestCase
-@property (nonatomic) TFFFileSwitcherDouble *testObject;
-@property (nonatomic) TFFFileProvider *mockFileProvider;
-@property (nonatomic, readonly) TFFXcodeDocumentNavigator *mockDocumentNavigator;
+@interface TFFFileSwitcherTests : XCTestCase {
+    TFFFileSwitcherDouble *testObject;
+    TFFFileProvider *mockFileProvider;
+    TFFXcodeDocumentNavigator *mockDocumentNavigator;
+}
 @end
 
 @implementation TFFFileSwitcherTests
@@ -16,15 +17,9 @@
 - (void)setUp {
     [super setUp];
     
-    _mockDocumentNavigator = OCMClassMock([TFFXcodeDocumentNavigator class]);
-    _mockFileProvider = OCMClassMock([TFFFileProvider class]);
-    _testObject = [[TFFFileSwitcherDouble alloc] initWithFileProvider:self.mockFileProvider];
-}
-
-- (void)tearDown {
-    _mockFileProvider = nil;
-    _testObject = nil;
-    [super tearDown];
+    mockDocumentNavigator = OCMClassMock([TFFXcodeDocumentNavigator class]);
+    mockFileProvider = OCMClassMock([TFFFileProvider class]);
+    testObject = [[TFFFileSwitcherDouble alloc] initWithFileProvider:mockFileProvider];
 }
 
 - (PBXTargetDouble *)testTarget {
@@ -41,28 +36,24 @@
     return target;
 }
 
-- (PBXFileReferenceDouble *)stubHeaderFileName:(NSString *)headerFileName {
-    PBXFileReferenceDouble *mockPBXHeaderRef = OCMClassMock([PBXFileReferenceDouble class]);
-    [OCMStub([mockPBXHeaderRef includingTargets]) andReturn:[NSSet setWithArray:@[]]];
-    [OCMStub([mockPBXHeaderRef name]) andReturn:headerFileName];
-    [OCMStub([mockPBXHeaderRef absolutePath]) andReturn:headerFileName];
-    return mockPBXHeaderRef;
+- (PBXFileReferenceDouble *)stubbedFileReferenceWithTargets:(NSArray *)targets fileName:(NSString *)fileName {
+    PBXFileReferenceDouble *mockPBXRef = OCMClassMock([PBXFileReferenceDouble class]);
+    [OCMStub([mockPBXRef includingTargets]) andReturn:[NSSet setWithArray:targets]];
+    [OCMStub([mockPBXRef name]) andReturn:fileName];
+    [OCMStub([mockPBXRef absolutePath]) andReturn:fileName];
+    return mockPBXRef;
 }
 
-- (PBXFileReferenceDouble *)stubSourceFileName:(NSString *)sourceFileName {
-    PBXFileReferenceDouble *mockPBXSourceRef = OCMClassMock([PBXFileReferenceDouble class]);
-    [OCMStub([mockPBXSourceRef includingTargets]) andReturn:[NSSet setWithArray:@[[self aviatorTarget]]]];
-    [OCMStub([mockPBXSourceRef name]) andReturn:sourceFileName];
-    [OCMStub([mockPBXSourceRef absolutePath]) andReturn:sourceFileName];
-    return mockPBXSourceRef;
+- (TFFReference *)headerReferenceWithName:(NSString *)name {
+    return [[TFFReference alloc] initWithPBXReference:[self stubbedFileReferenceWithTargets:@[] fileName:name]];
 }
 
-- (PBXFileReferenceDouble *)stubTestFileName:(NSString *)testFileName {
-    PBXFileReferenceDouble *mockPBXTestRef = OCMClassMock([PBXFileReferenceDouble class]);
-    [OCMStub([mockPBXTestRef includingTargets]) andReturn:[NSSet setWithArray:@[[self testTarget]]]];
-    [OCMStub([mockPBXTestRef name]) andReturn:testFileName];
-    [OCMStub([mockPBXTestRef absolutePath]) andReturn:testFileName];
-    return mockPBXTestRef;
+- (TFFReference *)sourceReferenceWithName:(NSString *)name {
+    return [[TFFReference alloc] initWithPBXReference:[self stubbedFileReferenceWithTargets:@[self.aviatorTarget] fileName:name]];
+}
+
+- (TFFReference *)testReferenceWithName:(NSString *)name {
+    return [[TFFReference alloc] initWithPBXReference:[self stubbedFileReferenceWithTargets:@[self.testTarget] fileName:name]];
 }
 
 - (IDESourceCodeDocumentDouble *)stubSourceCodeDocument:(NSString *)filePath {
@@ -74,123 +65,61 @@
     return sourceCodeDocument;
 }
 
+- (void)verifyTransitionFromCurrentFile:(NSString *)currentFileName toFile:(NSString *)transitioningFileName forReferenceCollection:(TFFFileReferenceCollection *)referenceCollection {
+    IDESourceCodeDocumentDouble *sourceCodeDocument = [self stubSourceCodeDocument:currentFileName];
+    OCMStub([mockFileProvider referenceCollectionForSourceCodeDocument:sourceCodeDocument]).andReturn(referenceCollection);
+
+    id fakeNavigator = OCMClassMock(TFFXcodeDocumentNavigatorFake.class);
+    OCMExpect([fakeNavigator jumpToFileURL:[NSURL fileURLWithPath:transitioningFileName]]);
+    [testObject switchBetweenReferenceCollectionFilesForCurrentSourceDocument:sourceCodeDocument];
+    OCMVerifyAll(fakeNavigator);
+}
+
+- (void)verifyNoTransitionFromCurrentFile:(NSString *)currentFileName toFile:(NSString *)transitioningFileName forReferenceCollection:(TFFFileReferenceCollection *)referenceCollection {
+    IDESourceCodeDocumentDouble *sourceCodeDocument = [self stubSourceCodeDocument:currentFileName];
+    OCMStub([mockFileProvider referenceCollectionForSourceCodeDocument:sourceCodeDocument]).andReturn(referenceCollection);
+
+    id fakeNavigator = OCMClassMock(TFFXcodeDocumentNavigatorFake.class);
+    [[fakeNavigator reject] jumpToFileURL:OCMOCK_ANY];
+    [testObject switchBetweenReferenceCollectionFilesForCurrentSourceDocument:sourceCodeDocument];
+    OCMVerifyAll(fakeNavigator);
+}
+
 #pragma mark -
 
 - (void)testWhenCurrentSourceDocIsHeaderFileThenNavigatorJumpsToTestFile {
-    PBXFileReferenceDouble *mockPBXHeaderRef = [self stubHeaderFileName:@"HanSolo.h"];
-    PBXFileReferenceDouble *mockPBXSourceRef = [self stubSourceFileName:@"HanSolo.m"];
-    PBXFileReferenceDouble *mockPBXTestRef = [self stubTestFileName:@"HanSoloTests.m"];
-    
-    TFFReference *headerRef = [[TFFReference alloc] initWithPBXReference:mockPBXHeaderRef];
-    TFFReference *sourceRef = [[TFFReference alloc] initWithPBXReference:mockPBXSourceRef];
-    TFFReference *testRef = [[TFFReference alloc] initWithPBXReference:mockPBXTestRef];
+    TFFReference *headerRef = [self headerReferenceWithName:@"HanSolo.h"];
+    TFFReference *sourceRef = [self sourceReferenceWithName:@"HanSolo.m"];
+    TFFReference *testRef = [self testReferenceWithName:@"HanSoloTests.m"];
 
-    TFFFileReferenceCollection *referenceCollection = [[TFFFileReferenceCollection alloc] initWithHeaderFileReference:headerRef
-                                                                                                  sourceFileReference:sourceRef
-                                                                                                    testFileReference:testRef];
-    
-    IDESourceCodeDocumentDouble *sourceCodeDocument = [self stubSourceCodeDocument:@"HanSolo.m"];
-    OCMStub([self.mockFileProvider referenceCollectionForSourceCodeDocument:sourceCodeDocument]).andReturn(referenceCollection);
-
-    id fakeNavigator = OCMClassMock(TFFXcodeDocumentNavigatorFake.class);
-    OCMExpect([fakeNavigator jumpToFileURL:[NSURL fileURLWithPath:@"HanSoloTests.m"]]);
-
-    [self.testObject switchBetweenReferenceCollectionFilesForCurrentSourceDocument:sourceCodeDocument];
-    
-    OCMVerifyAll(fakeNavigator);
+    TFFFileReferenceCollection *referenceCollection = [[TFFFileReferenceCollection alloc] initWithHeaderFileReference:headerRef sourceFileReference:sourceRef testFileReference:testRef];
+    [self verifyTransitionFromCurrentFile:@"HanSolo.h" toFile:@"HanSoloTests.m" forReferenceCollection:referenceCollection];
 }
 
 - (void)testWhenCurrentSourceDocIsSourceFileThenNavigatorJumpsToTestFile {
-    PBXFileReferenceDouble *mockPBXHeaderRef = [self stubHeaderFileName:@"HanSolo.h"];
-    PBXFileReferenceDouble *mockPBXSourceRef = [self stubSourceFileName:@"HanSolo.m"];
-    PBXFileReferenceDouble *mockPBXTestRef = [self stubTestFileName:@"HanSoloTests.m"];
-    
-    TFFReference *headerRef = [[TFFReference alloc] initWithPBXReference:mockPBXHeaderRef];
-    TFFReference *sourceRef = [[TFFReference alloc] initWithPBXReference:mockPBXSourceRef];
-    TFFReference *testRef = [[TFFReference alloc] initWithPBXReference:mockPBXTestRef];
-    
-    TFFFileReferenceCollection *referenceCollection = [[TFFFileReferenceCollection alloc] initWithHeaderFileReference:headerRef
-                                                                                                  sourceFileReference:sourceRef
-                                                                                                    testFileReference:testRef];
-    
-    IDESourceCodeDocumentDouble *sourceCodeDocument = [self stubSourceCodeDocument:@"HanSolo.h"];
-    OCMStub([self.mockFileProvider referenceCollectionForSourceCodeDocument:sourceCodeDocument]).andReturn(referenceCollection);
-    
-    id fakeNavigator = OCMClassMock(TFFXcodeDocumentNavigatorFake.class);
-    OCMExpect([fakeNavigator jumpToFileURL:[NSURL fileURLWithPath:@"HanSoloTests.m"]]);
-    
-    [self.testObject switchBetweenReferenceCollectionFilesForCurrentSourceDocument:sourceCodeDocument];
-    
-    OCMVerifyAll(fakeNavigator);
+    TFFReference *headerRef = [self headerReferenceWithName:@"HanSolo.h"];
+    TFFReference *sourceRef = [self sourceReferenceWithName:@"HanSolo.m"];
+    TFFReference *testRef = [self testReferenceWithName:@"HanSoloTests.m"];
+
+    TFFFileReferenceCollection *referenceCollection = [[TFFFileReferenceCollection alloc] initWithHeaderFileReference:headerRef sourceFileReference:sourceRef testFileReference:testRef];
+    [self verifyTransitionFromCurrentFile:@"HanSolo.m" toFile:@"HanSoloTests.m" forReferenceCollection:referenceCollection];
 }
 
 - (void)testWhenCurrentSourceDocIsTestFileThenNavigatorJumpsToSourceFile {
-    PBXFileReferenceDouble *mockPBXHeaderRef = [self stubHeaderFileName:@"HanSolo.h"];
-    PBXFileReferenceDouble *mockPBXSourceRef = [self stubSourceFileName:@"HanSolo.m"];
-    PBXFileReferenceDouble *mockPBXTestRef = [self stubTestFileName:@"HanSoloTests.m"];
+    TFFReference *headerRef = [self headerReferenceWithName:@"HanSolo.h"];
+    TFFReference *sourceRef = [self sourceReferenceWithName:@"HanSolo.m"];
+    TFFReference *testRef = [self testReferenceWithName:@"HanSoloTests.m"];
     
-    TFFReference *headerRef = [[TFFReference alloc] initWithPBXReference:mockPBXHeaderRef];
-    TFFReference *sourceRef = [[TFFReference alloc] initWithPBXReference:mockPBXSourceRef];
-    TFFReference *testRef = [[TFFReference alloc] initWithPBXReference:mockPBXTestRef];
-    
-    TFFFileReferenceCollection *referenceCollection = [[TFFFileReferenceCollection alloc] initWithHeaderFileReference:headerRef
-                                                                                                  sourceFileReference:sourceRef
-                                                                                                    testFileReference:testRef];
-    
-    IDESourceCodeDocumentDouble *sourceCodeDocument = [self stubSourceCodeDocument:@"HanSoloTests.m"];
-    OCMStub([self.mockFileProvider referenceCollectionForSourceCodeDocument:sourceCodeDocument]).andReturn(referenceCollection);
-    
-    id fakeNavigator = OCMClassMock(TFFXcodeDocumentNavigatorFake.class);
-    OCMExpect([fakeNavigator jumpToFileURL:[NSURL fileURLWithPath:@"HanSolo.m"]]);
-    
-    [self.testObject switchBetweenReferenceCollectionFilesForCurrentSourceDocument:sourceCodeDocument];
-    
-    OCMVerifyAll(fakeNavigator);
+    TFFFileReferenceCollection *referenceCollection = [[TFFFileReferenceCollection alloc] initWithHeaderFileReference:headerRef sourceFileReference:sourceRef testFileReference:testRef];
+    [self verifyTransitionFromCurrentFile:@"HanSoloTests.m" toFile:@"HanSolo.m" forReferenceCollection:referenceCollection];
 }
 
 - (void)testWhenCurrentSourceDocIsSourceFileAndNoUnitTestExistsThenNavigatorDoesNotJumpToFile {
-    PBXFileReferenceDouble *mockPBXHeaderRef = [self stubHeaderFileName:@"HanSolo.h"];
-    PBXFileReferenceDouble *mockPBXSourceRef = [self stubSourceFileName:@"HanSolo.m"];
-    
-    TFFReference *headerRef = [[TFFReference alloc] initWithPBXReference:mockPBXHeaderRef];
-    TFFReference *sourceRef = [[TFFReference alloc] initWithPBXReference:mockPBXSourceRef];
-    
-    TFFFileReferenceCollection *referenceCollection = [[TFFFileReferenceCollection alloc] initWithHeaderFileReference:headerRef
-                                                                                                  sourceFileReference:sourceRef
-                                                                                                    testFileReference:nil];
-    
-    IDESourceCodeDocumentDouble *sourceCodeDocument = [self stubSourceCodeDocument:@"HanSoloTests.m"];
-    OCMStub([self.mockFileProvider referenceCollectionForSourceCodeDocument:sourceCodeDocument]).andReturn(referenceCollection);
-    
-    id fakeNavigator = OCMClassMock(TFFXcodeDocumentNavigatorFake.class);
-    [[fakeNavigator reject] jumpToFileURL:[OCMArg any]];
-    
-    [self.testObject switchBetweenReferenceCollectionFilesForCurrentSourceDocument:sourceCodeDocument];
-    
-    OCMVerifyAll(fakeNavigator);
-}
+    TFFReference *headerRef = [self headerReferenceWithName:@"HanSolo.h"];
+    TFFReference *sourceRef = [self sourceReferenceWithName:@"HanSolo.m"];
 
-- (void)testWhenXcodeNavigatorThrowsExceptionThenFileSwitcherFailsSilently {
-    PBXFileReferenceDouble *mockPBXHeaderRef = [self stubHeaderFileName:@"HanSolo.h"];
-    PBXFileReferenceDouble *mockPBXSourceRef = [self stubSourceFileName:@"HanSolo.m"];
-    PBXFileReferenceDouble *mockPBXTestRef = [self stubTestFileName:@"HanSoloTests.m"];
-    
-    TFFReference *headerRef = [[TFFReference alloc] initWithPBXReference:mockPBXHeaderRef];
-    TFFReference *sourceRef = [[TFFReference alloc] initWithPBXReference:mockPBXSourceRef];
-    TFFReference *testRef = [[TFFReference alloc] initWithPBXReference:mockPBXTestRef];
-    
-    TFFFileReferenceCollection *referenceCollection = [[TFFFileReferenceCollection alloc] initWithHeaderFileReference:headerRef
-                                                                                                  sourceFileReference:sourceRef
-                                                                                                    testFileReference:testRef];
-    
-    IDESourceCodeDocumentDouble *sourceCodeDocument = [self stubSourceCodeDocument:@"HanSoloTests.m"];
-    OCMStub([self.mockFileProvider referenceCollectionForSourceCodeDocument:sourceCodeDocument]).andReturn(referenceCollection);
-    
-    NSException *exception = [NSException exceptionWithName:@"Exception" reason:@"" userInfo:nil];
-    id fakeNavigator = OCMClassMock(TFFXcodeDocumentNavigatorFake.class);
-    OCMStub([fakeNavigator jumpToFileURL:[NSURL fileURLWithPath:@"HanSolo.m"]]).andThrow(exception);
-    
-    XCTAssertNoThrow([self.testObject switchBetweenReferenceCollectionFilesForCurrentSourceDocument:sourceCodeDocument]);
+    TFFFileReferenceCollection *referenceCollection = [[TFFFileReferenceCollection alloc] initWithHeaderFileReference:headerRef sourceFileReference:sourceRef testFileReference:nil];
+    [self verifyNoTransitionFromCurrentFile:@"HanSoloTests.m" toFile:nil forReferenceCollection:referenceCollection];
 }
 
 @end
