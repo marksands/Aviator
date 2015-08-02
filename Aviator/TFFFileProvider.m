@@ -49,16 +49,20 @@
 
 - (NSString *)fileNameByStrippingExtensionAndLastOccuranceOfTest:(NSString *)fileName {
     NSString *file = [fileName stringByDeletingPathExtension];
+    NSString *strippedFileName = nil;
     
     if (file.length >= 5) {
-        NSRange rangeOfOccuranceOfTest = [file rangeOfString:@"Test" options:NSCaseInsensitiveSearch range:NSMakeRange(file.length-5, 5)];
-        if (rangeOfOccuranceOfTest.location == NSNotFound) {
-            return file;
+        NSRange rangeOfOccurrenceOfTest = [file rangeOfString:@"Test" options:NSCaseInsensitiveSearch range:NSMakeRange(file.length - 5, 5)];
+        NSRange rangeOfOccurrenceOfSpec = [file rangeOfString:@"Spec" options:NSCaseInsensitiveSearch range:NSMakeRange(file.length - 5, 5)];
+        if (rangeOfOccurrenceOfTest.location != NSNotFound) {
+            strippedFileName = [file substringToIndex:rangeOfOccurrenceOfTest.location];
+        } else if (rangeOfOccurrenceOfSpec.location != NSNotFound) {
+            strippedFileName = [file substringToIndex:rangeOfOccurrenceOfSpec.location];
+        } else {
+            strippedFileName = file;
         }
-        
-        return [file substringToIndex:rangeOfOccuranceOfTest.location];
     }
-    return file;
+    return strippedFileName;
 }
 
 @end
