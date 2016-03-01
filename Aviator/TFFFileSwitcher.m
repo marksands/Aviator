@@ -24,7 +24,11 @@
         if ([referenceCollection.headerFile.name isEqualToString:fileName] || [referenceCollection.sourceFile.name isEqualToString:fileName]) {
             [self.XcodeNavigatorClassSeam jumpToFileURL:[NSURL fileURLWithPath:referenceCollection.testFile.absolutePath]];
         } else if ([referenceCollection.testFile.name isEqualToString:fileName]) {
-            [self.XcodeNavigatorClassSeam jumpToFileURL:[NSURL fileURLWithPath:referenceCollection.sourceFile.absolutePath]];
+            if( referenceCollection.sourceFile.absolutePath ) {
+                [self.XcodeNavigatorClassSeam jumpToFileURL:[NSURL fileURLWithPath:referenceCollection.sourceFile.absolutePath]];
+            } else {
+                [self.XcodeNavigatorClassSeam jumpToFileURL:[NSURL fileURLWithPath:referenceCollection.headerFile.absolutePath]];
+            }
         }
     } @catch (NSException *) {}
 }
