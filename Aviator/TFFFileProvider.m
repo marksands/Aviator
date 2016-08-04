@@ -17,20 +17,6 @@
     return self;
 }
 
-- (TFFReference *)bestSuitableTestReferenceFromTestReferences:(NSArray<TFFReference *> *) references {
-    
-    [references sortedArrayUsingComparator:^NSComparisonResult(TFFReference *  _Nonnull ref1, TFFReference *  _Nonnull ref2) {
-        if ([ref1.name rangeOfString:@"Test"].location != NSNotFound) {
-            return NSOrderedAscending;
-        }
-        else {
-            return NSOrderedSame;
-        }
-    }];
-    
-    return references.firstObject;
-}
-
 - (TFFFileReferenceCollection *)referenceCollectionForSourceCodeDocument:(IDESourceCodeDocument *)sourceCodeDocument {
     if (sourceCodeDocument) {
         DVTFilePath *filePath = sourceCodeDocument.filePath;
@@ -56,8 +42,7 @@
             }
         }
         
-        testRef = [self bestSuitableTestReferenceFromTestReferences:testReferences];
-        
+        testRef = [self bestMatchingTestReferenceFromTestReferences:testReferences];
         return [[TFFFileReferenceCollection alloc] initWithHeaderFileReference:headerRef sourceFileReference:sourceRef testFileReference:testRef];
     }
     return nil;
@@ -82,5 +67,34 @@
     }
     return strippedFileName;
 }
+
+- (TFFReference *)bestMatchingTestReferenceFromTestReferences:(NSArray *)references {
+    NSArray * sortedTestReferences = [references sortedArrayUsingComparator:^NSComparisonResult(TFFReference * ref1, TFFReference * ref2) {
+        
+        NSInteger ref1Score = [self scoreForTestFileName:ref1.name];
+        NSInteger ref2Score = [self scoreForTestFileName:ref2.name];
+        
+        if (ref1Score > ref2Score) {
+            return NSOrderedAscending;
+        } else if (ref1Score < ref2Score) {
+            return NSOrderedDescending;
+        } else {
+            return NSOrderedSame;
+        }
+    }];
+    return sortedTestReferences.firstObject;
+}
+
+- (NSInteger)scoreForTestFileName:(NSString *)testFilename {
+    NSString *baseFilename = [testFilename stringByDeletingPathExtension];
+    if ([baseFilename hasSuffix:@"Tests"]) {
+        return 2;
+    } else if ([baseFilename rangeOfString:@"Test"].location != NSNotFound) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
 
 @end
