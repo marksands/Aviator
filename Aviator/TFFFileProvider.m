@@ -17,6 +17,20 @@
     return self;
 }
 
+- (TFFReference *)bestSuitableTestReferenceFromTestReferences:(NSArray<TFFReference *> *) references {
+    
+    [references sortedArrayUsingComparator:^NSComparisonResult(TFFReference *  _Nonnull ref1, TFFReference *  _Nonnull ref2) {
+        if ([ref1.name rangeOfString:@"Test"].location != NSNotFound) {
+            return NSOrderedAscending;
+        }
+        else {
+            return NSOrderedSame;
+        }
+    }];
+    
+    return references.firstObject;
+}
+
 - (TFFFileReferenceCollection *)referenceCollectionForSourceCodeDocument:(IDESourceCodeDocument *)sourceCodeDocument {
     if (sourceCodeDocument) {
         DVTFilePath *filePath = sourceCodeDocument.filePath;
@@ -27,11 +41,13 @@
         TFFReference *sourceRef = nil;
         TFFReference *testRef = nil;
         
+        NSMutableArray *testReferences = [NSMutableArray new];
+        
         NSArray *fileReferences = self.fileReferences;
         for (TFFReference *reference in fileReferences) {
             if ([reference.name rangeOfString:fileName].location != NSNotFound) {
                 if (reference.isTestFile) {
-                    testRef = reference;
+                    [testReferences addObject:reference];
                 } else if (reference.isSourceFile) {
                     sourceRef = reference;
                 } else if (reference.isHeaderFile) {
@@ -39,6 +55,8 @@
                 }
             }
         }
+        
+        testRef = [self bestSuitableTestReferenceFromTestReferences:testReferences];
         
         return [[TFFFileReferenceCollection alloc] initWithHeaderFileReference:headerRef sourceFileReference:sourceRef testFileReference:testRef];
     }
