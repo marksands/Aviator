@@ -113,4 +113,15 @@
     [self verifyReferenceCollectionHeader:headerRef1 source:sourceRef1 test:nil];
 }
 
+- (void)testWhenSourceFileExistsWithMultipleMatchingUnitTestFilesThenReturnTestFileWithSuffixTests {
+    TFFReference *headerRef1 = [self headerReferenceWithName:@"StarWars.h"];
+    TFFReference *sourceRef1 = [self sourceReferenceWithName:@"StarWars.m"];
+    TFFReference *testRef1 = [self testReferenceWithName:@"StarWarsTests.m"];
+    TFFReference *testRef2 = [self testReferenceWithName:@"StubStarWars.m"];
+    
+    testObject = [[TFFFileProvider alloc] initWithFileReferences:@[headerRef1, sourceRef1, testRef1, testRef2]];
+    [self setCurrentDocumentAsFile:@"StarWars.m"];
+    [self verifyReferenceCollectionHeader:headerRef1 source:sourceRef1 test:testRef1];
+}
+
 @end
