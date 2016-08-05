@@ -27,11 +27,13 @@
         TFFReference *sourceRef = nil;
         TFFReference *testRef = nil;
         
+        NSMutableArray *testReferences = [NSMutableArray new];
+        
         NSArray *fileReferences = self.fileReferences;
         for (TFFReference *reference in fileReferences) {
             if ([reference.name rangeOfString:fileName].location != NSNotFound) {
                 if (reference.isTestFile) {
-                    testRef = reference;
+                    [testReferences addObject:reference];
                 } else if (reference.isSourceFile) {
                     sourceRef = reference;
                 } else if (reference.isHeaderFile) {
@@ -40,6 +42,7 @@
             }
         }
         
+        testRef = [self bestMatchingTestReferenceFromTestReferences:testReferences];
         return [[TFFFileReferenceCollection alloc] initWithHeaderFileReference:headerRef sourceFileReference:sourceRef testFileReference:testRef];
     }
     return nil;
@@ -64,5 +67,34 @@
     }
     return strippedFileName;
 }
+
+- (TFFReference *)bestMatchingTestReferenceFromTestReferences:(NSArray *)references {
+    NSArray * sortedTestReferences = [references sortedArrayUsingComparator:^NSComparisonResult(TFFReference * ref1, TFFReference * ref2) {
+        
+        NSInteger ref1Score = [self scoreForTestFileName:ref1.name];
+        NSInteger ref2Score = [self scoreForTestFileName:ref2.name];
+        
+        if (ref1Score > ref2Score) {
+            return NSOrderedAscending;
+        } else if (ref1Score < ref2Score) {
+            return NSOrderedDescending;
+        } else {
+            return NSOrderedSame;
+        }
+    }];
+    return sortedTestReferences.firstObject;
+}
+
+- (NSInteger)scoreForTestFileName:(NSString *)testFilename {
+    NSString *baseFilename = [testFilename stringByDeletingPathExtension];
+    if ([baseFilename hasSuffix:@"Tests"]) {
+        return 2;
+    } else if ([baseFilename rangeOfString:@"Test"].location != NSNotFound) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
 
 @end

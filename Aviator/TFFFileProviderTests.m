@@ -113,4 +113,29 @@
     [self verifyReferenceCollectionHeader:headerRef1 source:sourceRef1 test:nil];
 }
 
+- (void)testWhenSourceFileExistsWithTestHelperAndTestsUnitTestFilesThenReferenceCollectionReturnsTestFileWithSuffixTests {
+    TFFReference *headerRef1 = [self headerReferenceWithName:@"StarWars.h"];
+    TFFReference *sourceRef1 = [self sourceReferenceWithName:@"StarWars.m"];
+    
+    TFFReference *testHelperTestRef = [self testReferenceWithName:@"StarWarsTestHelper.m"];
+    TFFReference *testsTestRef = [self testReferenceWithName:@"StarWarsTests.m"];
+    
+    testObject = [[TFFFileProvider alloc] initWithFileReferences:@[headerRef1, sourceRef1, testHelperTestRef, testsTestRef]];
+    [self setCurrentDocumentAsFile:@"StarWars.m"];
+    [self verifyReferenceCollectionHeader:headerRef1 source:sourceRef1 test:testsTestRef];
+}
+
+- (void)testWhenSourceFileExistsWithMultipleMatchingUnitTestFilesThenReferenceCollectionReturnsTestFileWithSuffixTests {
+    TFFReference *headerRef1 = [self headerReferenceWithName:@"StarWars.h"];
+    TFFReference *sourceRef1 = [self sourceReferenceWithName:@"StarWars.m"];
+    
+    TFFReference *stubTestRef = [self testReferenceWithName:@"StubStarWars.m"];
+    TFFReference *testsTestRef = [self testReferenceWithName:@"StarWarsTests.m"];
+    TFFReference *testHelperTestRef = [self testReferenceWithName:@"StarWarsTestHelper.m"];
+    
+    testObject = [[TFFFileProvider alloc] initWithFileReferences:@[headerRef1, sourceRef1, testHelperTestRef, testsTestRef, stubTestRef]];
+    [self setCurrentDocumentAsFile:@"StarWars.m"];
+    [self verifyReferenceCollectionHeader:headerRef1 source:sourceRef1 test:testsTestRef];
+}
+
 @end
