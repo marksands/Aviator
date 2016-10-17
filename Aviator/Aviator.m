@@ -43,7 +43,6 @@ static Aviator *sharedPlugin;
     } @catch(NSException *e) { NSLog(@"prevented plugin crash from removeConflictingKeyBinding : %@", e); }
 }
 
-// TODO: Investigate why "Navigate" doesn't work
 - (void)addJumpItem {
     NSMenuItem *navigateItem = [[NSApp mainMenu] itemWithTitle:@"Find"];
     if (navigateItem) {
