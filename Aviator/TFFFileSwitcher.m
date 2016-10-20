@@ -22,7 +22,6 @@
         
         NSString *fileName = sourceCodeDocument.filePath.fileURL.lastPathComponent;
         if ([referenceCollection.headerFile.name isEqualToString:fileName] || [referenceCollection.sourceFile.name isEqualToString:fileName]) {
-            [self.XcodeNavigatorClassSeam jumpToFileURL:[NSURL fileURLWithPath:referenceCollection.testFile.absolutePath]];
             if( referenceCollection.testFile == nil ) {
                 NSString *testFilename = [[fileName stringByDeletingPathExtension] stringByAppendingString:@"Tests"];
                 NSAlert *alert = [[NSAlert alloc]init];

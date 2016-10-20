@@ -32,7 +32,10 @@
         }
         
         if (!self.isTestFile) {
-            if ([self.pbxFileReference.name.pathExtension isEqualToString:@"m"]) {
+            if ([self.pbxFileReference.name.pathExtension isEqualToString:@"m"] ||
+                [self.pbxFileReference.name.pathExtension isEqualToString:@"mm"] ||
+                [self.pbxFileReference.name.pathExtension isEqualToString:@"swift"]
+                ) {
                 _isSourceFile = YES;
             } else {
                 _isHeaderFile = YES;
