@@ -18,8 +18,10 @@
 
 - (void)switchBetweenReferenceCollectionFilesForCurrentSourceDocument:(IDESourceCodeDocument *)sourceCodeDocument {
     @try {
+        NSLog(@"jumping0.............");
         TFFFileReferenceCollection *referenceCollection = [self.fileProvider referenceCollectionForSourceCodeDocument:sourceCodeDocument];
-        
+        NSLog(@"jumping1.............");
+        NSLog(@"jumping from: %@", sourceCodeDocument.filePath);
         NSString *fileName = sourceCodeDocument.filePath.fileURL.lastPathComponent;
         if ([referenceCollection.headerFile.name isEqualToString:fileName] || [referenceCollection.sourceFile.name isEqualToString:fileName]) {
             if( referenceCollection.testFile == nil ) {
@@ -36,12 +38,17 @@
                     [pasteboard setString:testFilename forType:NSStringPboardType];
                 }
             } else {
+                NSLog(@"jumping to test file : %@",referenceCollection.testFile.absolutePath);
+
                 [[self XcodeNavigatorClassSeam] jumpToFileURL:[NSURL fileURLWithPath:referenceCollection.testFile.absolutePath]];
             }
         } else if ([referenceCollection.testFile.name isEqualToString:fileName]) {
             if( referenceCollection.sourceFile.absolutePath ) {
+                NSLog(@"jumping to source file : %@",referenceCollection.sourceFile.absolutePath);
                 [self.XcodeNavigatorClassSeam jumpToFileURL:[NSURL fileURLWithPath:referenceCollection.sourceFile.absolutePath]];
             } else {
+                NSLog(@"jumping to headerFile file : %@",referenceCollection.headerFile.absolutePath);
+
                 [self.XcodeNavigatorClassSeam jumpToFileURL:[NSURL fileURLWithPath:referenceCollection.headerFile.absolutePath]];
             }
         }

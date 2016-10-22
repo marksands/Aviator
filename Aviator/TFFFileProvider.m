@@ -31,13 +31,19 @@
         
         NSArray *fileReferences = self.fileReferences;
         for (TFFReference *reference in fileReferences) {
-            if ([reference.name rangeOfString:fileName].location != NSNotFound) {
+            if( ! [reference isKindOfClass:[TFFFileReference class]] ) {
+                continue;
+            }
+            NSRange range = [reference.name rangeOfString:fileName];
+            if (range.location != NSNotFound) {
                 if (reference.isTestFile) {
                     [testReferences addObject:reference];
-                } else if (reference.isSourceFile) {
-                    sourceRef = reference;
-                } else if (reference.isHeaderFile) {
-                    headerRef = reference;
+                } else if( [reference.name.stringByDeletingPathExtension isEqualToString:fileName] ) {
+                    if (reference.isSourceFile) {
+                        sourceRef = reference;
+                    } else if (reference.isHeaderFile) {
+                        headerRef = reference;
+                    }
                 }
             }
         }
@@ -52,7 +58,7 @@
 
 - (NSString *)fileNameByStrippingExtensionAndLastOccuranceOfTest:(NSString *)fileName {
     NSString *file = [fileName stringByDeletingPathExtension];
-    NSString *strippedFileName = nil;
+    NSString *strippedFileName = file;
     
     if (file.length >= 5) {
         NSRange rangeOfOccurrenceOfTest = [file rangeOfString:@"Test" options:NSCaseInsensitiveSearch range:NSMakeRange(file.length - 5, 5)];

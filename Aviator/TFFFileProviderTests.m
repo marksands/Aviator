@@ -141,15 +141,25 @@
     XCTAssertTrue(testRef2.isTestFile);
 }
 
-- (void)testWhenSourceFileExistsWithOtherSuffixesThenShouldOpenCorrectTestFile {
+- (void)testWhenSourceFileExistsWithOtherSuffixesThenReferenceCollectionReturnsCorrectTestFile {
     TFFReference *headerRef1 = [self headerReferenceWithName:@"StarWars.h"];
     TFFReference *sourceRef1 = [self sourceReferenceWithName:@"StarWars.m"];
     TFFReference *headerRef2 = [self headerReferenceWithName:@"StarWarsSpaceShip.h"];
     TFFReference *sourceRef2 = [self sourceReferenceWithName:@"StarWarsSpaceShip.m"];
-    TFFReference *testRef = [self testReferenceWithName:@"StarWarTests.m"];
+    TFFReference *testRef = [self testReferenceWithName:@"StarWarsTests.m"];
 
-    testObject = [[TFFFileProvider alloc] initWithFileReferences:@[headerRef1, sourceRef1, headerRef2, sourceRef2,  testRef]];
+    testObject = [[TFFFileProvider alloc] initWithFileReferences:@[headerRef1, sourceRef1, headerRef2, sourceRef2, testRef]];
     [self setCurrentDocumentAsFile:@"StarWars.m"];
+    [self verifyReferenceCollectionHeader:headerRef1 source:sourceRef1 test:testRef];
+}
+
+- (void)testWhenSourceFileExistsWithLessThanFiveCharactersNameThenReferenceCollectionReturnsCorrectTestFile {
+    TFFReference *headerRef1 = [self headerReferenceWithName:@"Star.h"];
+    TFFReference *sourceRef1 = [self sourceReferenceWithName:@"Star.m"];
+    TFFReference *testRef = [self testReferenceWithName:@"StarTests.m"];
+    
+    testObject = [[TFFFileProvider alloc] initWithFileReferences:@[headerRef1, sourceRef1, testRef]];
+    [self setCurrentDocumentAsFile:@"Star.m"];
     [self verifyReferenceCollectionHeader:headerRef1 source:sourceRef1 test:testRef];
 }
 
