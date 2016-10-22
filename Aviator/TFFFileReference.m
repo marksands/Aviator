@@ -26,7 +26,6 @@
         
         for (PBXTarget *target in [targets allObjects]) {
             if( ![[target targetTypeDisplayName] containsString:@"Test"] ) {
-            //if (![target _looksLikeUnitTestTarget]) {
                 _isTestFile = NO;
             }
         }

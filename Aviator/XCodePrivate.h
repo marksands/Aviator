@@ -85,7 +85,6 @@
 
 @interface PBXTarget : PBXObject
 - (NSString *)name;
-- (BOOL)_looksLikeUnitTestTarget;
 - (NSString *)targetTypeDisplayName;
 @end
 

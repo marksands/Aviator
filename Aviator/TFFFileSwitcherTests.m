@@ -24,15 +24,13 @@
 
 - (PBXTargetDouble *)testTarget {
     PBXTargetDouble *target = OCMClassMock([PBXTargetDouble class]);
-    BOOL yes = YES;
-    [OCMStub([target _looksLikeUnitTestTarget]) andReturnValue:OCMOCK_VALUE(yes)];
+    [OCMStub([target targetTypeDisplayName]) andReturn:@""];
     return target;
 }
 
 - (PBXTargetDouble *)aviatorTarget {
     PBXTargetDouble *target = OCMClassMock([PBXTargetDouble class]);
-    BOOL no = NO;
-    [OCMStub([target _looksLikeUnitTestTarget]) andReturnValue:OCMOCK_VALUE(no)];
+    [OCMStub([target targetTypeDisplayName]) andReturn:@"Bundle"];
     return target;
 }
 

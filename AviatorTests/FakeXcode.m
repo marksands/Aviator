@@ -29,7 +29,8 @@
 @end
 @implementation PBXTarget
 - (NSString *)name { return nil; }
-- (BOOL)_looksLikeUnitTestTarget { return NO; }
+// possible values : "Application", "Unit Test Bundle", "Bundle"
+- (NSString *)targetTypeDisplayName { return @"Application"; }
 @end
 
 @implementation PBXContainer

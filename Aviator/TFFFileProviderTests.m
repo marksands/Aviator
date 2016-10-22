@@ -19,15 +19,13 @@
 
 - (PBXTargetDouble *)testTarget {
     PBXTargetDouble *target = OCMClassMock([PBXTargetDouble class]);
-    BOOL yes = YES;
-    [OCMStub([target _looksLikeUnitTestTarget]) andReturnValue:OCMOCK_VALUE(yes)];
+    [OCMStub([target targetTypeDisplayName]) andReturn:@"Unit Test Bundle"];
     return target;
 }
 
 - (PBXTargetDouble *)aviatorTarget {
     PBXTargetDouble *target = OCMClassMock([PBXTargetDouble class]);
-    BOOL no = NO;
-    [OCMStub([target _looksLikeUnitTestTarget]) andReturnValue:OCMOCK_VALUE(no)];
+    [OCMStub([target targetTypeDisplayName]) andReturn:@"Application"];
     return target;
 }
 
@@ -136,6 +134,23 @@
     testObject = [[TFFFileProvider alloc] initWithFileReferences:@[headerRef1, sourceRef1, testHelperTestRef, testsTestRef, stubTestRef]];
     [self setCurrentDocumentAsFile:@"StarWars.m"];
     [self verifyReferenceCollectionHeader:headerRef1 source:sourceRef1 test:testsTestRef];
+}
+    
+- (void)testReferenceWithNameThenShouldHaveIsTestFileSettedToYES {
+    TFFReference *testRef2 = [self testReferenceWithName:@"StarWarTests.m"];
+    XCTAssertTrue(testRef2.isTestFile);
+}
+
+- (void)testWhenSourceFileExistsWithOtherSuffixesThenShouldOpenCorrectTestFile {
+    TFFReference *headerRef1 = [self headerReferenceWithName:@"StarWars.h"];
+    TFFReference *sourceRef1 = [self sourceReferenceWithName:@"StarWars.m"];
+    TFFReference *headerRef2 = [self headerReferenceWithName:@"StarWarsSpaceShip.h"];
+    TFFReference *sourceRef2 = [self sourceReferenceWithName:@"StarWarsSpaceShip.m"];
+    TFFReference *testRef = [self testReferenceWithName:@"StarWarTests.m"];
+
+    testObject = [[TFFFileProvider alloc] initWithFileReferences:@[headerRef1, sourceRef1, headerRef2, sourceRef2,  testRef]];
+    [self setCurrentDocumentAsFile:@"StarWars.m"];
+    [self verifyReferenceCollectionHeader:headerRef1 source:sourceRef1 test:testRef];
 }
 
 @end
