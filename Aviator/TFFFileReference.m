@@ -25,13 +25,16 @@
         }
         
         for (PBXTarget *target in [targets allObjects]) {
-            if (![target _looksLikeUnitTestTarget]) {
+            if( ![[target targetTypeDisplayName] containsString:@"Test"] ) {
                 _isTestFile = NO;
             }
         }
         
         if (!self.isTestFile) {
-            if ([self.pbxFileReference.name.pathExtension isEqualToString:@"m"]) {
+            if ([self.pbxFileReference.name.pathExtension isEqualToString:@"m"] ||
+                [self.pbxFileReference.name.pathExtension isEqualToString:@"mm"] ||
+                [self.pbxFileReference.name.pathExtension isEqualToString:@"swift"]
+                ) {
                 _isSourceFile = YES;
             } else {
                 _isHeaderFile = YES;
